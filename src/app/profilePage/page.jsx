@@ -13,7 +13,7 @@ const page = () => {
 
      <div className=" ">
          <div className="relative w-full h-[500px] md:h-[650px] overflow-hidden">
-        {/* Background Image using Next/Image */}
+       
         <Image
           src={hero}
           alt="Hero Banner"

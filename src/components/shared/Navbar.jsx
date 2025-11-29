@@ -42,7 +42,7 @@ export const Navbar = () => {
             <Link href="/" className="text-2xl font-bold">
               <Image
                 alt="logo"
-                src="/img/logo1.png"
+                src="/img/logo3.png"
                 height={100}
                 width={110}
                 priority
@@ -74,8 +74,10 @@ export const Navbar = () => {
                 </div>
               </div>
               <div>
-               <Link href={'/consultation'}> <button
-                  className="
+                <Link href={"/consultation"}>
+                  {" "}
+                  <button
+                    className="
   relative overflow-hidden 
   px-6 py-3 text-lg rounded-full 
   flex items-center gap-3 
@@ -83,13 +85,13 @@ export const Navbar = () => {
   transition-all duration-300
   group
 "
-                >
-                  <span className="relative z-10">Consultation</span>
-                  <FaArrowRight className="relative z-10" />
+                  >
+                    <span className="relative z-10">Consultation</span>
+                    <FaArrowRight className="relative z-10" />
 
-                  {/* Hover Green Animation Layer */}
-                  <span
-                    className="
+                    {/* Hover Green Animation Layer */}
+                    <span
+                      className="
     absolute inset-0 
     bg-primary  
     translate-x-[-102%] 
@@ -97,8 +99,9 @@ export const Navbar = () => {
     transition-transform duration-500 
     rounded-full
   "
-                  ></span>
-                </button></Link>
+                    ></span>
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
