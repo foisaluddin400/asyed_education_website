@@ -1,7 +1,10 @@
+"use client";
 import React, { useState } from "react";
 import { Input, Modal, message } from "antd";
 import { EyeOutlined, DeleteOutlined, SearchOutlined } from "@ant-design/icons";
+import Image from "next/image";  // ✅ Next.js Image import
 import ChildsAdd from "./ChildsAdd";
+
 const AddChilds = () => {
   const [children] = useState([
     {
@@ -29,17 +32,16 @@ const AddChilds = () => {
       img: "https://i.ibb.co/z6fmQ6m/student3.png",
     },
   ]);
-const [openAddModal, setOpenAddModal] = useState(false);
+
+  const [openAddModal, setOpenAddModal] = useState(false);
   const [selectedChild, setSelectedChild] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // View Details
   const handleView = (child) => {
     setSelectedChild(child);
     setIsModalOpen(true);
   };
 
-  // Delete Action
   const handleDelete = (name) => {
     message.success(`${name} deleted successfully`);
   };
@@ -50,37 +52,37 @@ const [openAddModal, setOpenAddModal] = useState(false);
         <h1 className="text-lg">Children</h1>
         <div className="flex gap-5">
           <Input
-           
             placeholder="Search by name..."
             prefix={<SearchOutlined />}
             style={{ maxWidth: "500px", height: "40px" }}
           />
-          <div>
-            {" "}
-            <button
-              onClick={() => setOpenAddModal(true)}
-              className="bg-primary w-[150px] text-white py-2 rounded"
-            >
-              Add Childs
-            </button>
-          </div>
+
+          <button
+            onClick={() => setOpenAddModal(true)}
+            className="bg-primary w-[150px] text-white py-2 rounded"
+          >
+            Add Childs
+          </button>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 ">
+      {/* Grid Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {children.map((child) => (
           <div
             key={child.id}
             className="rounded border p-2 hover:shadow-lg hover:-translate-y-1 transition-all"
           >
-            {/* Picture */}
-            <img
-              src={child.img}
-              alt={child.name}
-              className="w-full h-40 object-cover rounded-lg mb-4"
-            />
+            {/* Next.js Image */}
+            <div className="w-full h-40 relative mb-4">
+              <Image
+                src={child.img}
+                alt={child.name}
+                fill
+                className="object-cover rounded-lg"
+              />
+            </div>
 
-            {/* Info */}
             <h2 className="text-xl font-bold text-gray-800">{child.name}</h2>
             <p className="text-gray-600 mt-1">
               <strong>Year:</strong> {child.year}
@@ -92,29 +94,26 @@ const [openAddModal, setOpenAddModal] = useState(false);
               <strong>Subject:</strong> {child.subject}
             </p>
 
-            {/* Action Buttons */}
             <div className="flex items-center gap-4 mt-4">
               <button
                 onClick={() => handleView(child)}
                 className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded hover:bg-teal-700 transition-all"
               >
-                <EyeOutlined />
-                See Details
+                <EyeOutlined /> See Details
               </button>
 
               <button
                 onClick={() => handleDelete(child.name)}
                 className="flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-all"
               >
-                <DeleteOutlined />
-                Delete
+                <DeleteOutlined /> Delete
               </button>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Ant Design Modal */}
+      {/* Modal */}
       <Modal
         title="Child Details"
         open={isModalOpen}
@@ -123,14 +122,16 @@ const [openAddModal, setOpenAddModal] = useState(false);
       >
         {selectedChild && (
           <div className="text-center">
-            <img
-              src={selectedChild.img}
-              alt={selectedChild.name}
-              className="w-40 h-40 object-cover mx-auto rounded-full mb-4"
-            />
+            <div className="w-40 h-40 mx-auto relative mb-4">
+              <Image
+                src={selectedChild.img}
+                alt={selectedChild.name}
+                fill
+                className="object-cover rounded-full"
+              />
+            </div>
 
             <h2 className="text-2xl font-bold">{selectedChild.name}</h2>
-
             <p className="text-gray-600 mt-2">
               <strong>Year:</strong> {selectedChild.year}
             </p>
@@ -144,10 +145,7 @@ const [openAddModal, setOpenAddModal] = useState(false);
         )}
       </Modal>
 
-      <ChildsAdd
-        openAddModal={openAddModal}
-        setOpenAddModal={setOpenAddModal}
-      />
+      <ChildsAdd openAddModal={openAddModal} setOpenAddModal={setOpenAddModal} />
     </div>
   );
 };

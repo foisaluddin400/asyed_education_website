@@ -1,4 +1,4 @@
-import Profile from "@/components/profile/profile";
+
 import React from "react";
 import background from "../../../public/img/back.png";
 import contactGirl from "../../../public/img/contact.png";
@@ -6,6 +6,7 @@ import mainContactRightImage from "../../../public/img/privecy.png";
 import Image from "next/image";
 import hero from "../../../public/img/bannar1.jpg";
 import { RiArrowRightWideLine } from "react-icons/ri";
+import Profile from "@/components/profile/Profile";
 const page = () => {
   return (
    <div className=" mb-20">

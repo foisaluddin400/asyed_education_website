@@ -72,7 +72,7 @@ const AdminLayout = () => {
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 px-4 py-6 overflow-y-auto">
+        <nav className="flex-1 pr-4 py-6 overflow-y-auto">
           {menuItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeTab === item.id;
@@ -85,9 +85,9 @@ const AdminLayout = () => {
                   setIsSidebarOpen(false); // Close sidebar on mobile after click
                 }}
                 
-                className={`w-full flex items-center px-4 py-4 mb-2 rounded-lg transition-all ${
+                className={`w-full flex items-center px-4 py-2 mb-2 rounded-r-full transition-all ${
                   isActive
-                    ? "bg-white text-teal-600 shadow-lg font-medium"
+                    ? "bg-accent text-white shadow-lg font-medium"
                     : "text-teal-50 hover:bg-teal-600 hover:text-white"
                 }`}
               >

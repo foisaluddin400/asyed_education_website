@@ -1,45 +1,23 @@
-'use client';
-import { useState, useEffect } from "react";
-import { Avatar, Upload, Form, Input, Button, message } from "antd";
-import { IoCameraOutline } from "react-icons/io5";
+"use client";
 
+import { useState } from "react";
+import Image from "next/image";
+import { Form, Input, message } from "antd";
+import { IoCameraOutline } from "react-icons/io5";
 import { ChangePass } from "./ChangePass";
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState("1");
-  // const[updateProfile] = useUpdateProfileMutation();
   const [form] = Form.useForm();
-  const [image, setImage] = useState();
-  // const {data: profile} = useGetProfileQuery()
+  const [image, setImage] = useState(null);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     setImage(file);
   };
 
-  // useEffect(() => {
-  //   if (profile) {
-  //     form.setFieldsValue({
-  //       name: profile.name,
-  //       email: profile.email,
-  //       phone: profile.phone,
-  //     });
-  //   }
-  // }, [profile, form]);
-
   const onEditProfile = async (values) => {
-    // const data = new FormData();
-    // if (image) data.append("photo", image);
-    // data.append("name", values.name);
-    // data.append("phone", values.phone);
-    //  try {
-    //       const response = await updateProfile(data).unwrap();
-    //       console.log(response)
-    //       message.success(response.message);
-    //     } catch (error) {
-    //       message.error(error.data.message);
-    //       console.log(error);
-    //     }
+    message.success("Profile updated!");
   };
 
   const tabItems = [
@@ -50,32 +28,41 @@ const Profile = () => {
         <Form onFinish={onEditProfile} layout="vertical" form={form}>
           <Form.Item name="name" label="Name">
             <Input
-              style={{ padding: "9px", height:'50px', borderRadius: "0px",borderRadius: '30px' }}
+              style={{
+                padding: "9px",
+                height: "50px",
+                borderRadius: "30px",
+              }}
               placeholder="Enter name"
-              rules={[{ required: true, message: "Please write a Email" }]}
             />
           </Form.Item>
 
           <Form.Item name="email" label="Email">
             <Input
               disabled
-             style={{ padding: "9px", height:'50px', borderRadius: "0px",borderRadius: '30px' }}
+              style={{
+                padding: "9px",
+                height: "50px",
+                borderRadius: "30px",
+              }}
               placeholder="Enter Email"
-              rules={[{ required: true, message: "Please write a Email" }]}
             />
           </Form.Item>
 
           <Form.Item name="phone" label="Phone Number">
             <Input
-              style={{ padding: "9px", height:'50px', borderRadius: "0px",borderRadius: '30px' }}
+              style={{
+                padding: "9px",
+                height: "50px",
+                borderRadius: "30px",
+              }}
               placeholder="Enter Phone Number"
-              rules={[{ required: true, message: "Please write a Number" }]}
             />
           </Form.Item>
 
           <button
-            type="primary"
             className="w-full rounded-full bg-primary text-white py-3"
+            type="submit"
           >
             Update
           </button>
@@ -85,62 +72,73 @@ const Profile = () => {
     {
       key: "2",
       label: "Change Password",
-      content: <ChangePass></ChangePass>,
+      content: <ChangePass />,
     },
   ];
 
   return (
     <div className="p-3 bg-white">
-      <div className="">
-        <div className="  mt-8 rounded-lg  ">
-          {/* Profile Picture Section */}
-          <div className="text-center mb-6">
-            <div className="relative w-[140px] h-[124px] mx-auto">
-              <input
-                type="file"
-                onChange={handleImageChange}
-                id="img"
-                style={{ display: "none" }}
+      <div className="mt-8 rounded-lg">
+        {/* Profile Picture Section */}
+        <div className="text-center mb-6">
+          <div className="relative w-[140px] h-[140px] mx-auto">
+
+            {/* Hidden File Input */}
+            <input
+              type="file"
+              onChange={handleImageChange}
+              id="img"
+              style={{ display: "none" }}
+            />
+
+            {/* Next.js Image */}
+            <div className="w-[140px] h-[140px] rounded-full overflow-hidden relative">
+              <Image
+                src={
+                  image
+                    ? URL.createObjectURL(image)
+                    : "/default-user.png" // use your default profile pic
+                }
+                alt="Profile Photo"
+                fill
+                className="object-cover"
               />
-              <img
-                style={{ width: 140, height: 140, borderRadius: "100%" }}
-                src={`${image ? URL.createObjectURL(image) : `ddd`}`}
-                alt="Admin Profile"
-              />
-              {activeTab === "1" && (
-                <label
-                  htmlFor="img"
-                  className="absolute top-[80px] -right-2 bg-white rounded-full w-8 h-8 flex items-center justify-center cursor-pointer"
-                >
-                  <IoCameraOutline className="text-black " />
-                </label>
-              )}
             </div>
 
-            <p className="text-lg font-semibold mt-4">foisal</p>
+            {/* Upload Icon */}
+            {activeTab === "1" && (
+              <label
+                htmlFor="img"
+                className="absolute top-[90px] -right-2 bg-white rounded-full w-8 h-8 flex items-center justify-center cursor-pointer shadow-sm"
+              >
+                <IoCameraOutline className="text-black" />
+              </label>
+            )}
           </div>
 
-          {/* Custom Tabs Section */}
-          <div className="mb-4">
-            <div className="flex space-x-6 justify-center mb-4">
-              {tabItems.map((item) => (
-                <button
-                  key={item.key}
-                  className={`py-2 font-medium ${
-                    activeTab === item.key
-                      ? "border-b border-primary text-primary"
-                      : "text-black hover:text-[#02111E]"
-                  }`}
-                  onClick={() => setActiveTab(item.key)}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-            <div>
-              {tabItems.find((item) => item.key === activeTab)?.content}
-            </div>
+          <p className="text-lg font-semibold mt-4">Foisal</p>
+        </div>
+
+        {/* Tabs */}
+        <div className="mb-4">
+          <div className="flex space-x-6 justify-center mb-4">
+            {tabItems.map((item) => (
+              <button
+                key={item.key}
+                className={`py-2 font-medium ${
+                  activeTab === item.key
+                    ? "border-b border-primary text-primary"
+                    : "text-black hover:text-[#02111E]"
+                }`}
+                onClick={() => setActiveTab(item.key)}
+              >
+                {item.label}
+              </button>
+            ))}
           </div>
+
+          {/* Tab Content */}
+          <div>{tabItems.find((item) => item.key === activeTab)?.content}</div>
         </div>
       </div>
     </div>

@@ -5,6 +5,8 @@ import { Modal, message } from "antd";
 import { EyeOutlined, DeleteOutlined } from "@ant-design/icons";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { RiUserForbidLine } from "react-icons/ri";
+import Image from "next/image";
+
 const Dashboard = () => {
   // Sample Data
   const [children] = useState([
@@ -50,78 +52,85 @@ const Dashboard = () => {
 
   return (
     <div>
-      {/* Grid Cards */}
-
+      {/* Summary Cards */}
       <div className="grid grid-cols-2 gap-4">
-        <div className="flex gap-4 items-center bg-white p-6 py-16 border rounded ">
+        <div className="flex gap-4 items-center bg-white p-6 py-16 border rounded">
           <div className="bg-yellow-100 w-[55px] rounded-full h-[55px] flex justify-center items-center text-3xl">
             <HiOutlineUserGroup className="text-yellow-500" />
           </div>
           <div>
             <h1 className="font-semibold text-2xl">1,100</h1>
-            <h1 className="text-zinc-500"> Total User</h1>
+            <h1 className="text-zinc-500">Total User</h1>
           </div>
         </div>
+
         <div className="flex gap-4 items-center bg-white p-6 rounded border">
           <div className="bg-sky-100 w-[55px] rounded-full h-[55px] flex justify-center items-center text-3xl">
             <RiUserForbidLine className="text-sky-600" />
           </div>
           <div>
             <h1 className="font-semibold text-2xl">1,100</h1>
-            <h1 className="text-zinc-500"> User Block</h1>
+            <h1 className="text-zinc-500">User Block</h1>
           </div>
         </div>
       </div>
-     <div className=""> <h1 className="text-lg mt-4 bg-primary text-white p-2 rounded">Childs</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-3">
-        
-        {children.map((child) => (
-          <div
-            key={child.id}
-            className="border rounded p-2 hover:shadow-lg hover:-translate-y-1 transition-all"
-          >
-            {/* Picture */}
-            <img
-              src={child.img}
-              alt={child.name}
-              className="w-full h-40 object-cover rounded-lg mb-4"
-            />
 
-            {/* Info */}
-            <h2 className="text-xl font-bold text-gray-800">{child.name}</h2>
-            <p className="text-gray-600 mt-1">
-              <strong>Year:</strong> {child.year}
-            </p>
-            <p className="text-gray-600">
-              <strong>Class:</strong> {child.class}
-            </p>
-            <p className="text-gray-600">
-              <strong>Subject:</strong> {child.subject}
-            </p>
+      {/* Child Section */}
+      <div>
+        <h1 className="text-lg mt-4 bg-primary text-white p-2 rounded">Childs</h1>
 
-            {/* Action Buttons */}
-            <div className="flex items-center gap-4 mt-4">
-              <button
-                onClick={() => handleView(child)}
-                className="flex items-center gap-2 bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-all"
-              >
-                <EyeOutlined />
-                See Details
-              </button>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-3">
+          {children.map((child) => (
+            <div
+              key={child.id}
+              className="border rounded p-2 hover:shadow-lg hover:-translate-y-1 transition-all"
+            >
+              {/* Next.js Image */}
+              <div className="relative w-full h-40 mb-4">
+                <Image
+                  src={child.img}
+                  alt={child.name}
+                  fill
+                  className="object-cover rounded-lg"
+                />
+              </div>
 
-              <button
-                onClick={() => handleDelete(child.name)}
-                className="flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-all"
-              >
-                <DeleteOutlined />
-                Delete
-              </button>
+              {/* Info */}
+              <h2 className="text-xl font-bold text-gray-800">{child.name}</h2>
+              <p className="text-gray-600 mt-1">
+                <strong>Year:</strong> {child.year}
+              </p>
+              <p className="text-gray-600">
+                <strong>Class:</strong> {child.class}
+              </p>
+              <p className="text-gray-600">
+                <strong>Subject:</strong> {child.subject}
+              </p>
+
+              {/* Buttons */}
+              <div className="flex items-center gap-4 mt-4">
+                <button
+                  onClick={() => handleView(child)}
+                  className="flex items-center gap-2 bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-all"
+                >
+                  <EyeOutlined />
+                  See Details
+                </button>
+
+                <button
+                  onClick={() => handleDelete(child.name)}
+                  className="flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-all"
+                >
+                  <DeleteOutlined />
+                  Delete
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-</div>
-      {/* Ant Design Modal */}
+
+      {/* Modal */}
       <Modal
         title="Child Details"
         open={isModalOpen}
@@ -130,11 +139,14 @@ const Dashboard = () => {
       >
         {selectedChild && (
           <div className="text-center">
-            <img
-              src={selectedChild.img}
-              alt={selectedChild.name}
-              className="w-40 h-40 object-cover mx-auto rounded-full mb-4"
-            />
+            <div className="relative w-40 h-40 mx-auto mb-4">
+              <Image
+                src={selectedChild.img}
+                alt={selectedChild.name}
+                fill
+                className="object-cover rounded-full"
+              />
+            </div>
 
             <h2 className="text-2xl font-bold">{selectedChild.name}</h2>
 

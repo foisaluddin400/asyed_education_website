@@ -1,9 +1,10 @@
+"use client";
 import React, { useState } from "react";
+import Image from "next/image";
 import { Input, Modal, message } from "antd";
 import { EyeOutlined, DeleteOutlined, SearchOutlined } from "@ant-design/icons";
 
 const ManageTutions = () => {
-  // Sample Data
   const [tutions] = useState([
     {
       id: 1,
@@ -11,7 +12,7 @@ const ManageTutions = () => {
       price: "$50",
       class: "Class 5",
       subject: "Mathematics",
-      status: "pending", // pending | completed | rejected
+      status: "pending",
       img: "https://i.ibb.co/1QbVGFw/teacher1.png",
     },
     {
@@ -37,18 +38,15 @@ const ManageTutions = () => {
   const [selectedTution, setSelectedTution] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // View Details
   const handleView = (data) => {
     setSelectedTution(data);
     setIsModalOpen(true);
   };
 
-  // Delete Action
   const handleDelete = (teacher) => {
     message.success(`${teacher}'s record deleted successfully`);
   };
 
-  // Payment Button Action
   const handlePayment = (teacher) => {
     message.success(`Payment initiated for ${teacher}`);
   };
@@ -58,7 +56,7 @@ const ManageTutions = () => {
   };
 
   return (
-    <div className="">
+    <div>
       <div className="flex justify-between mb-4">
         <h1 className="text-lg">Manage Tutions</h1>
         <div className="flex gap-5">
@@ -69,6 +67,7 @@ const ManageTutions = () => {
           />
         </div>
       </div>
+
       {/* Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {tutions.map((item) => (
@@ -76,14 +75,16 @@ const ManageTutions = () => {
             key={item.id}
             className="rounded border p-2 hover:shadow-lg hover:-translate-y-1 transition-all"
           >
-            {/* Picture */}
-            <img
-              src={item.img}
-              alt={item.teacher}
-              className="w-full h-40 object-cover rounded-lg mb-4"
-            />
+            {/* Next.js Image */}
+            <div className="w-full h-40 relative mb-4 rounded-lg overflow-hidden">
+              <Image
+                src={item.img}
+                alt={item.teacher}
+                fill
+                className="object-cover"
+              />
+            </div>
 
-            {/* Info */}
             <h2 className="text-xl font-bold text-gray-800">{item.teacher}</h2>
             <p className="text-gray-600 mt-1">
               <strong>Price:</strong> {item.price}
@@ -95,7 +96,6 @@ const ManageTutions = () => {
               <strong>Subject:</strong> {item.subject}
             </p>
 
-            {/* Payment Status */}
             <p className="mt-3">
               <strong>Status:</strong>{" "}
               <span
@@ -159,7 +159,7 @@ const ManageTutions = () => {
         ))}
       </div>
 
-      {/* Modal for Details */}
+      {/* Modal */}
       <Modal
         title="Teacher Details"
         open={isModalOpen}
@@ -168,11 +168,14 @@ const ManageTutions = () => {
       >
         {selectedTution && (
           <div className="text-center">
-            <img
-              src={selectedTution.img}
-              alt={selectedTution.teacher}
-              className="w-40 h-40 object-cover mx-auto rounded-full mb-4"
-            />
+            <div className="w-40 h-40 mx-auto relative mb-4 rounded-full overflow-hidden">
+              <Image
+                src={selectedTution.img}
+                alt={selectedTution.teacher}
+                fill
+                className="object-cover"
+              />
+            </div>
 
             <h2 className="text-2xl font-bold">{selectedTution.teacher}</h2>
 
