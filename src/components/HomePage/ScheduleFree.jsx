@@ -7,18 +7,22 @@ import { FaArrowRight } from "react-icons/fa";
 const ScheduleFree = () => {
   return (
     <div className="bg-green-50">
-      <div className="grid grid-cols-2 gap-4 ">
-        
-        <div className="flex items-center">
+      <div className="md:grid grid-cols-2 gap-4 ">
+        <div className="flex py-8 md:py-0 items-center">
           <div className="text-center max-w-2xl m-auto">
-            <h1 className="text-4xl mb-4">
-           Schedule a Free <br /> Academic Consultation
+            <h1 className="md:text-4xl text-3xl mb-4">
+              Schedule a Free <br /> Academic Consultation
             </h1>
-            <p>Not sure where to start? Our free academic consultation helps parents and students identify strengths, learning goals, and areas for improvement.  During this session, you’ll meet with one of our expert advisors who will</p>
-           
+            <p>
+              Not sure where to start? Our free academic consultation helps
+              parents and students identify strengths, learning goals, and areas
+              for improvement.  During this session, you’ll meet with one of our
+              expert advisors who will
+            </p>
+
             <div className="mt-8 flex justify-center gap-4">
-                <button
-                             className="
+              <button
+                className="
              relative overflow-hidden 
              px-6 py-3 text-lg rounded-full 
              flex items-center gap-3 
@@ -26,13 +30,13 @@ const ScheduleFree = () => {
              transition-all duration-300
              group
            "
-                           >
-                             <span className="relative z-10">Consultation</span>
-                             <FaArrowRight className="relative z-10" />
-           
-                             {/* Hover Green Animation Layer */}
-                             <span
-                               className="
+              >
+                <span className="relative z-10">Consultation</span>
+                <FaArrowRight className="relative z-10" />
+
+                {/* Hover Green Animation Layer */}
+                <span
+                  className="
                absolute inset-0 
                bg-accent  
                translate-x-[-102%] 
@@ -40,8 +44,8 @@ const ScheduleFree = () => {
                transition-transform duration-500 
                rounded-full
              "
-                             ></span>
-                           </button>
+                ></span>
+              </button>
             </div>
           </div>
         </div>

@@ -85,7 +85,7 @@ const page = () => {
   ];
 
   return (
-    <div>
+    <div className="mb-20">
       <div className="relative w-full h-[500px] md:h-[650px] overflow-hidden">
         {/* Background Image using Next/Image */}
         <Image
@@ -100,10 +100,10 @@ const page = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-primary  to-[#000000b9] opacity-90"></div>
 
         {/* Content */}
-        <div className="relative   flex items-center h-full container m-auto text-white">
+        <div className="relative px-3 flex items-center h-full container m-auto text-white">
           <div>
             <h1 className=" leading-tight">
-              <span className="text-5xl">At-Home Tutoring</span> <br />
+              <span className="md:text-5xl text-3xl">At-Home Tutoring</span> <br />
               <p className="py-3 max-w-2xl text-gray-400">
                 One-on-one and group tutoring sessions tailored to each
                 student’s learning style and pace. Our expert tutors create
@@ -145,7 +145,7 @@ const page = () => {
           </div>
         </div>
       </div>
-      <div className="container mt-11 rounded-md  m-auto grid grid-cols-1 md:grid-cols-3 gap-6 py-7 px-5">
+      <div className="container mt-11 rounded-md  m-auto grid grid-cols-1 md:grid-cols-3 gap-6 py-7 md:px-5 px-3">
         {/* Single Feature Item */}
         <div className="text-center border p-6 rounded-lg  hover:shadow-xl transition-shadow duration-300">
           <div className="flex items-center justify-center">
@@ -207,10 +207,10 @@ const page = () => {
           backgroundImage: `url(${background.src})`,
         }}
       >
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-3">
           {/* Heading */}
           <div className="text-center mb-14">
-            <h2 className="text-4xl font-bold text-white">Our Service</h2>
+            <h2 className="md:text-4xl text-3xl font-bold text-white">Our Service</h2>
             <p className="text-gray-300 mt-2 max-w-xl mx-auto">
               Easily find and book qualified tutors by subject, grade level, and
               availability.
@@ -256,10 +256,10 @@ const page = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 mt-11">
+      <div className="max-w-7xl mx-auto px-3 mt-11">
         {/* Heading */}
         <div className="text-center mb-14">
-          <h2 className="text-4xl font-bold text-gray-900">Our Service</h2>
+          <h2 className="md:text-4xl text-3xl font-bold text-gray-900">Our Service</h2>
           <p className="text-gray-600 mt-2 max-w-xl mx-auto">
             Easily find and book qualified tutors by subject, grade level, and
             availability.
@@ -296,7 +296,7 @@ const page = () => {
       </div>
 
       <div className="bg-green-50 mt-11">
-        <div className="grid grid-cols-2 gap-6 px-4 p-5">
+        <div className="md:grid grid-cols-2 gap-6 px-4 p-5">
           <div className="bg-white p-5 flex items-center">
             <div>
               <h3 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
@@ -339,7 +339,7 @@ const page = () => {
           </div>
         </div>
       </div>
-      <div className="mt-11 flex justify-center">
+      <div className="md:mt-11 mt-5 flex justify-center">
         <button
           className="
                       relative overflow-hidden 

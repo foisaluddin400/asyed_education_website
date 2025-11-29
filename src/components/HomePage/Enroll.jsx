@@ -8,26 +8,30 @@ import { FaArrowRight } from "react-icons/fa";
 
 export default function Enroll() {
   return (
-    <div className="mt-20">
+    <div className="mt-20 ">
       <section
-        className="relative w-full h-[600px] flex items-center justify-center text-center overflow-hidden"
+        className="relative w-full md:h-[600px] h-[400px] flex items-center justify-center text-center overflow-hidden"
         style={{
           backgroundImage: `url(${backgroundImage.src})`,
         }}
       >
         {/* Left Doll */}
-        <div className="absolute left-20 bottom-0  h-auto select-none pointer-events-none">
+        <div className="hidden md:block">
+            <div className="absolute left-20 bottom-0 h-auto select-none pointer-events-none">
           <Image src={leftDoll} alt="Left Doll" width={500} />
+        </div>
         </div>
 
         {/* Right Doll */}
-        <div className="absolute right-20 bottom-0  h-auto select-none pointer-events-none">
+       <div className="hidden md:block">
+         <div className="absolute right-20 bottom-0  h-auto select-none pointer-events-none">
           <Image src={rightDoll} alt="Right Doll" width={500} />
         </div>
+       </div>
 
         {/* Center Text */}
         <div className="z-10 text-white px-4">
-          <h1 className="text-7xl font-bold leading-tight">
+          <h1 className="md:text-7xl text-4xl font-bold leading-tight">
             How To Enroll Your Child <br /> To a Class
           </h1>
           <div className="flex justify-center mt-11">

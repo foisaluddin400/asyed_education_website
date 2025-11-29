@@ -26,10 +26,10 @@ export default function Page() {
         <div className="absolute inset-0 bg-gradient-to-r from-primary  to-[#000000b9] opacity-90"></div>
 
         {/* Content */}
-        <div className="relative   flex items-center h-full container m-auto text-white">
+        <div className="relative  px-3 flex items-center h-full container m-auto text-white">
           <div>
             <h1 className=" leading-tight">
-              <span className="text-5xl">Blogs</span> <br />
+              <span className="md:text-5xl text-3xl">Blogs</span> <br />
               <p className="py-3 max-w-2xl text-gray-400">
                 With a team of experienced tutors, flexible learning options,
                 and data-driven progress tracking, we ensure that education is
@@ -70,10 +70,10 @@ export default function Page() {
           </div>
         </div>
       </div>
-      <section className="py-16 px-6 max-w-7xl mx-auto">
+      <section className="py-16 md:px-4 px-3 max-w-7xl mx-auto">
         {/* Heading */}
         <div className="text-center mb-14">
-          <h1 className="text-4xl font-bold text-gray-900">Blog</h1>
+          <h1 className="md:text-4xl text-3xl font-bold text-gray-900">Blog</h1>
           <p className="text-gray-500 mt-2 max-w-xl mx-auto">
             Easily find and book qualified tutors by subject, grade level, and
             availability.

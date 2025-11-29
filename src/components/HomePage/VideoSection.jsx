@@ -25,10 +25,10 @@ const videos = [
 
 const VideoSection = () => {
   return (
-    <div className="max-w-7xl mx-auto px-6 py-20">
+    <div className="max-w-7xl mx-auto md:px-6 px-3 py-20">
       {/* Heading */}
       <div className="text-center mb-16">
-        <h1 className="text-4xl font-bold text-gray-900">
+        <h1 className="md:text-4xl text-3xl font-bold text-gray-900">
           Welcome To Seeds Of Learning
         </h1>
         <p className="text-gray-600 mt-3 max-w-2xl mx-auto">

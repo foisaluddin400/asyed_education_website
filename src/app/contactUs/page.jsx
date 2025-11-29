@@ -7,14 +7,14 @@ import leftImageFrom from "../../../public/img/contactLeft.png";           // bo
 
 export default function ContactPage() {
   return (
-    <div className=" py-16 md:py-11">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+    <div className=" py-8 md:py-11">
+      <div className="container mx-auto px-3 sm:px-6 lg:px-8 space-y-16">
 
         {/* Top Section */}
         <div className="bg-gray-200 rounded-3xl overflow-hidden">
           <div className="grid md:grid-cols-2 items-center">
             {/* Left Text */}
-            <div className="p-10 md:p-16">
+            <div className="p-4 md:p-16">
               <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
                 Let’s Connect
               </h2>
@@ -40,7 +40,7 @@ export default function ContactPage() {
         {/* Bottom Section: Form + Illustration */}
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left Illustration */}
-          <div className="order-2 lg:order-1 bg-gray-200 rounded-3xl p-8 flex justify-center">
+          <div className="order-2 lg:order-1 bg-gray-200 rounded-3xl md:p-8 p-4 flex justify-center">
             <Image
               src={leftImageFrom}
               alt="Woman chatting on phone"
@@ -51,7 +51,7 @@ export default function ContactPage() {
           </div>
 
           {/* Right Form */}
-          <div className="order-1 lg:order-2  p-4 md:p-4">
+          <div className="order-1 lg:order-2   md:p-4">
             <form className="space-y-6">
               <div>
                 <label className="block text-gray-700 font-medium mb-2">Full Name</label>

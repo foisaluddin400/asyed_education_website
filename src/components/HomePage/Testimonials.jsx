@@ -127,24 +127,35 @@ const Testimonials = () => {
     splideRef.current?.splide.go(">");
   };
   return (
-   <div>
-    <div className="text-center pt-20 ">
-        <h1 className="text-4xl">Testimonials</h1>
-        <p className="text-neutral pt-1">Easily find and book qualified tutors by subject, grade <br /> level, and availability.</p>
-    </div>
-     <div
-      className="py-16 mt-9 bg-cover bg-center"
-      style={{
-        backgroundImage: `url(${background.src})`,
-      }}
-    >
-      <div className="grid grid-cols-2 text-white gap-4 container m-auto py-8 px-5">
-        <div>
-          <h1 className="text-2xl font-semibold mb-3">Testomonial</h1>
-          <h1 className="text-6xl mb-6 font-bold" >What Students Have To Say</h1>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis maxime earum facilis eligendi velit! Consequatur exercitationem veritatis fugit, beatae temporibus maxime nesciunt, harum, dicta sed tempore repellendus iusto reprehenderit velit natus blanditiis!</p>
-              <button
-                                       className="
+    <div>
+      <div className="text-center pt-20 ">
+        <h1 className="md:text-4xl text-3xl">Testimonials</h1>
+        <p className="text-neutral pt-1">
+          Easily find and book qualified tutors by subject, grade <br /> level,
+          and availability.
+        </p>
+      </div>
+      <div
+        className="md:py-16 mt-9 bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${background.src})`,
+        }}
+      >
+        <div className="md:grid grid-cols-2 text-white gap-4 container m-auto py-8 px-5">
+          <div>
+            <h1 className="text-2xl font-semibold mb-3">Testomonial</h1>
+            <h1 className="md:text-6xl text-4xl mb-6 font-bold">
+              What Students Have To Say
+            </h1>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis
+              maxime earum facilis eligendi velit! Consequatur exercitationem
+              veritatis fugit, beatae temporibus maxime nesciunt, harum, dicta
+              sed tempore repellendus iusto reprehenderit velit natus
+              blanditiis!
+            </p>
+            <button
+              className="
                                        mt-8
                        relative overflow-hidden 
                        px-6 py-3 text-lg rounded-full 
@@ -153,13 +164,12 @@ const Testimonials = () => {
                        transition-all duration-300
                        group
                      "
-                                     >
-                                       <span className="relative z-10">Find More</span>
-                                       <FaArrowRight className="relative z-10" />
-                     
-                                      
-                                       <span
-                                         className="
+            >
+              <span className="relative z-10">Find More</span>
+              <FaArrowRight className="relative z-10" />
+
+              <span
+                className="
                          absolute inset-0 
                          bg-black 
                          translate-x-[-102%] 
@@ -167,85 +177,85 @@ const Testimonials = () => {
                          transition-transform duration-500 
                          rounded-full
                        "
-                                       ></span>
-                                     </button>
-        </div>
-        <div className="">
-          <div className="w-full">
-            <Splide
-              ref={splideRef}
-              options={{
-                type: "loop",
-                perPage: 2,
-                gap: "1rem",
-                arrows: false,
-                pagination: false,
-                breakpoints: {
-                  1724: { perPage: 3 },
-                  968: { perPage: 2 },
-                  640: { perPage: 1 },
-                },
-              }}
-              aria-label="Testimonials"
-              className="w-full"
-            >
-              {testimonials.map((item, index) => (
-                <SplideSlide key={index}>
-                  <div className="shadow-lg bg-[#FFFFFF] rounded-2xl p-4 py-8 h-full flex flex-col justify-between">
-                    <div>
-                      <div className="flex pb-3 text-yellow-500">
-                        <MdStar />
-                        <MdStar />
-                        <MdStar />
-                        <MdStar />
-                        <MdStar />
-                        <p className="-mt-1 pl-2 text-gray-600">(5.0)</p>
-                      </div>
-                      <p className="text-sm mt-1 text-gray-700 italic">
-                        {item?.review}
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-4 mt-5">
-                      <div className="relative w-[60px] h-[60px]">
-                        <Image
-                          src={item?.img}
-                          alt={item?.name}
-                          fill
-                          className="rounded-full object-cover"
-                        />
-                      </div>
-                      <div>
-                        <h5 className="font-semibold text-gray-900">
-                          {item?.name}
-                        </h5>
-                        <p className="text-sm text-gray-500">{item?.role}</p>
-                      </div>
-                    </div>
-                  </div>
-                </SplideSlide>
-              ))}
-            </Splide>
+              ></span>
+            </button>
           </div>
+          <div className="mt-8 md:mt-0">
+            <div className="w-full">
+              <Splide
+                ref={splideRef}
+                options={{
+                  type: "loop",
+                  perPage: 2,
+                  gap: "1rem",
+                  arrows: false,
+                  pagination: false,
+                  breakpoints: {
+                    1724: { perPage: 3 },
+                    968: { perPage: 2 },
+                    640: { perPage: 1 },
+                  },
+                }}
+                aria-label="Testimonials"
+                className="w-full"
+              >
+                {testimonials.map((item, index) => (
+                  <SplideSlide key={index}>
+                    <div className="shadow-lg bg-[#FFFFFF] rounded-2xl p-4 py-8 h-full flex flex-col justify-between">
+                      <div>
+                        <div className="flex pb-3 text-yellow-500">
+                          <MdStar />
+                          <MdStar />
+                          <MdStar />
+                          <MdStar />
+                          <MdStar />
+                          <p className="-mt-1 pl-2 text-gray-600">(5.0)</p>
+                        </div>
+                        <p className="text-sm mt-1 text-gray-700 italic">
+                          {item?.review}
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-4 mt-5">
+                        <div className="relative w-[60px] h-[60px]">
+                          <Image
+                            src={item?.img}
+                            alt={item?.name}
+                            fill
+                            className="rounded-full object-cover"
+                          />
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-gray-900">
+                            {item?.name}
+                          </h5>
+                          <p className="text-sm text-gray-500">{item?.role}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </SplideSlide>
+                ))}
+              </Splide>
+            </div>
 
-          {/* Custom Arrows */}
-          <div className="flex gap-3 justify-center mt-5">
-            <button
-              className="bg-[#0091FF] p-2 rounded text-white"
-              onClick={handlePrevClick}
-            >
-              <HiArrowNarrowLeft className="text-2xl" />
-            </button>
-            <button
-              className="bg-[#0091FF] p-2 rounded text-white"
-              onClick={handleNextClick}
-            >
-              <HiArrowNarrowRight className="text-2xl" />
-            </button>
+            {/* Custom Arrows */}
+            <div className="flex gap-3 justify-center mt-5">
+              <button
+                className="bg-[#0091FF] p-2 rounded text-white"
+                onClick={handlePrevClick}
+              >
+                <HiArrowNarrowLeft className="text-2xl" />
+              </button>
+              <button
+                className="bg-[#0091FF] p-2 rounded text-white"
+                onClick={handleNextClick}
+              >
+                <HiArrowNarrowRight className="text-2xl" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-   </div>
   );
 };
 

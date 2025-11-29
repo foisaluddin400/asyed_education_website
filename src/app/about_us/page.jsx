@@ -7,6 +7,7 @@ import about3 from "../../../public/img/about3.jpg";
 import icon1 from "../../../public/img/icon1.png";
 import icon2 from "../../../public/img/icon2.png";
 import icon3 from "../../../public/img/icon4.png";
+import { RiArrowRightWideLine } from "react-icons/ri";
 const page = () => {
   return (
     <div>
@@ -24,44 +25,19 @@ const page = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-primary  to-[#000000b9] opacity-90"></div>
 
         {/* Content */}
-        <div className="relative   flex items-center h-full container m-auto text-white">
+        <div className="relative px-3  flex items-center h-full container m-auto text-white">
           <div>
             <h1 className=" leading-tight">
-              <span className="text-5xl">
-                Smart, Trusted Tutoring <br /> for Every Student
-              </span>{" "}
-              <br />
-              <p className="py-3">
-                Track Your Child’s Learning Journey – Book Tutors, View
-                Progress, Stay Connected
+              <span className="md:text-5xl text-3xl">About Us</span> <br />
+              <p className="py-3 max-w-2xl text-gray-400">
+                With a team of experienced tutors, flexible learning options,
+                and data-driven progress tracking, we ensure that education is
+                not just about grades — it’s about growth, confidence, and
+                lifelong curiosity.
               </p>
             </h1>
 
-            <div className="mt-11 flex gap-4">
-              <button
-                className="
-                      relative overflow-hidden 
-                      px-6 py-3 text-lg rounded-full 
-                      flex items-center gap-3 
-                      bg-accent text-white
-                      transition-all duration-300
-                      group
-                    "
-              >
-                <span className="relative z-10">Book Free Consultation</span>
-
-                {/* Hover Green Animation Layer */}
-                <span
-                  className="
-                        absolute inset-0 
-                        bg-primary  
-                        translate-x-[-101%] 
-                        group-hover:translate-x-0 
-                        transition-transform duration-500 
-                        rounded-full
-                      "
-                ></span>
-              </button>
+            <div className="mt-11 ">
               <button
                 className="
                       relative overflow-hidden 
@@ -72,7 +48,9 @@ const page = () => {
                       group
                     "
               >
-                <span className="relative z-10">Learn More</span>
+                <span className="relative z-10  flex items-center gap-1">
+                  Home <RiArrowRightWideLine className=" " /> About Us
+                </span>
 
                 {/* Hover Green Animation Layer */}
                 <span
@@ -92,7 +70,7 @@ const page = () => {
         </div>
       </div>
       <div className="bg-green-50 ">
-        <div className=" grid grid-cols-2 gap-4 container m-auto my-20 py-11">
+        <div className=" lg:grid grid-cols-2 gap-4 container px-4 lg-px-0 m-auto lg:my-20 py-11">
           <div>
             <Image
               className="h-[300px] object-cover pb-4"
@@ -106,7 +84,7 @@ const page = () => {
               <Image src={about3} alt="about1" width={1920} height={1080} />
             </div>
           </div>
-          <div>
+          <div className="pt-6 lg:pt-0">
             <h1 className="text-2xl font-semibold mb-3">
               About Seeds of Learning
             </h1>

@@ -19,7 +19,7 @@ export default function ContactPage() {
 
   return (
     <section className=""  >
-      <div className="container mx-auto px-4 ">
+      <div className="container mx-auto md:px-4 px-3">
         <div className="grid lg:grid-cols-2 gap-6 items-center">
 
           {/* Left: 3D Girl Character */}
@@ -40,7 +40,7 @@ export default function ContactPage() {
           </div>
 
           {/* Right: Ant Design Form */}
-          <div className="order-1 lg:order-2  p-2 md:p-5 ">
+          <div className="order-1 lg:order-2  md:p-5 ">
             
 
             <Form

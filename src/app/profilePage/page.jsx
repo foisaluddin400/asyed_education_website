@@ -8,7 +8,7 @@ import hero from "../../../public/img/bannar1.jpg";
 import { RiArrowRightWideLine } from "react-icons/ri";
 const page = () => {
   return (
-   <div className=" ">
+   <div className=" mb-20">
 
      <div className=" ">
          <div className="relative w-full h-[500px] md:h-[650px] overflow-hidden">
@@ -25,10 +25,10 @@ const page = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-primary  to-[#000000b9] opacity-90"></div>
 
         {/* Content */}
-        <div className="relative z-10  flex items-center h-full container m-auto text-white">
+        <div className="relative px-3   flex items-center h-full container m-auto text-white">
           <div>
             <h1 className=" leading-tight">
-              <span className="text-5xl">Profile</span> <br />
+              <span className="md:text-5xl text-3xl">Profile</span> <br />
               <p className="py-3 max-w-2xl text-gray-400">
                 With a team of experienced tutors, flexible learning options,
                 and data-driven progress tracking, we ensure that education is
@@ -93,7 +93,7 @@ const page = () => {
         </div>
 
         {/* Right: Ant Design Form */}
-        <div className="order-1 lg:order-2  p-2 md:p-5 ">
+        <div className="order-1 lg:order-2 md:p-5 ">
           <Profile></Profile>
         </div>
       </div>

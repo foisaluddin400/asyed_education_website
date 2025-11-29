@@ -74,7 +74,7 @@ export const Navbar = () => {
                 </div>
               </div>
               <div>
-                <button
+               <Link href={'/consultation'}> <button
                   className="
   relative overflow-hidden 
   px-6 py-3 text-lg rounded-full 
@@ -98,7 +98,7 @@ export const Navbar = () => {
     rounded-full
   "
                   ></span>
-                </button>
+                </button></Link>
               </div>
             </div>
           </div>
@@ -195,10 +195,10 @@ export const Navbar = () => {
 
       {/* Mobile Drawer */}
       <Drawer
-        style={{ backgroundColor: "#1D3557", color: "white" }}
+        style={{ backgroundColor: "#004F44", color: "white" }}
         title={
           <Image
-            src="/img/logo.png"
+            src="/img/logo2.png"
             alt="Logo"
             className="w-[120px] mx-auto block"
             width={120}

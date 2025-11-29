@@ -92,7 +92,7 @@ const Profile = () => {
   return (
     <div className="p-3 bg-white">
       <div className="">
-        <div className="  mt-8 rounded-lg p-6 ">
+        <div className="  mt-8 rounded-lg  ">
           {/* Profile Picture Section */}
           <div className="text-center mb-6">
             <div className="relative w-[140px] h-[124px] mx-auto">

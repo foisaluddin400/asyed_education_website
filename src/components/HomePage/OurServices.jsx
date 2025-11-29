@@ -7,6 +7,7 @@ import service4 from "../../../public/img/service4.jpg";
 import icon from "../../../public/img/icon1.png";
 import { FaArrowRight } from "react-icons/fa";
 import { GoArrowRight } from "react-icons/go";
+import Link from "next/link";
 
 const services = [
   {
@@ -58,7 +59,7 @@ const services = [
 export default function OurServices() {
   return (
     <div
-      className="py-36 mt-16 bg-cover bg-center"
+      className="md:py-36 py-16 md:mt-16 bg-cover bg-center"
       style={{
         backgroundImage: `url(${background.src})`,
       }}
@@ -66,7 +67,7 @@ export default function OurServices() {
       <div className="container mx-auto px-4">
         {/* Heading */}
         <div className="text-center mb-14">
-          <h2 className="text-4xl font-bold text-gray-900">Our Service</h2>
+          <h2 className="md:text-4xl text-3xl font-bold text-gray-900">Our Service</h2>
           <p className="text-gray-600 mt-2 max-w-xl mx-auto">
             Easily find and book qualified tutors by subject, grade level, and
             availability.
@@ -108,9 +109,9 @@ export default function OurServices() {
 
                 <div className="relative">
                   <div className="bg-[#c3e2c9] rounded-full w-[43px]  h-[43px]"></div>
-                  <button className=" absolute top-2 flex gap-2 items-center left-4 z-10">
+                  <Link href={'/our_services/servicesDetails'}><button className=" absolute top-2 flex gap-2 items-center left-4 z-10">
                     Read More <GoArrowRight className=" " />
-                  </button>
+                  </button></Link>
                 </div>
               </div>
             </div>

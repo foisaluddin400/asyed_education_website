@@ -6,7 +6,7 @@ import Image from "next/image";
 const PremiumLearning = () => {
   return (
     <div className="bg-green-50">
-      <div className="grid grid-cols-2 gap-4 container m-auto py-8 px-5">
+      <div className="md:grid grid-cols-2 gap-4 container m-auto py-8 px-5">
         <div>
           <Image
             className=""
@@ -18,7 +18,7 @@ const PremiumLearning = () => {
         </div>
         <div className="flex items-center">
           <div>
-            <h1 className="text-6xl mb-4">
+            <h1 className="md:text-6xl text-3xl mb-4 mt-8 md:mt-0">
               Premium <span className="text-primary">Learning</span> Experience
             </h1>
             <div className="flex gap-2 items-center">

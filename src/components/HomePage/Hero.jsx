@@ -4,6 +4,7 @@ import icon1 from "../../../public/img/icon1.png";
 import icon2 from "../../../public/img/icon2.png";
 import icon3 from "../../../public/img/icon4.png";
 import { FaArrowRight } from "react-icons/fa";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -22,10 +23,10 @@ const Hero = () => {
         <div className="absolute  inset-0 bg-gradient-to-r from-primary  to-[#000000b9] opacity-90"></div>
 
         {/* Content */}
-        <div className="relative   flex items-center h-full container m-auto text-white">
+        <div className="relative px-3  flex items-center h-full container m-auto text-white">
           <div>
             <h1 className=" leading-tight">
-              <span className="text-5xl">
+              <span className="md:text-5xl text-3xl">
                 Smart, Trusted Tutoring <br /> for Every Student
               </span>{" "}
               <br />
@@ -35,18 +36,18 @@ const Hero = () => {
               </p>
             </h1>
 
-            <div className="mt-11 flex gap-4">
-              <button
+            <div className="mt-11 flex gap-2">
+              <Link href={'/consultation'}><button
                 className="
               relative overflow-hidden 
-              px-6 py-3 text-lg rounded-full 
+              md:px-6 px-2 md:py-3 py-1 md:text-lg rounded-full 
               flex items-center gap-3 
               bg-accent text-white
               transition-all duration-300
               group
             "
               >
-                <span className="relative z-10">Book Free Consultation</span>
+                <span className="relative z-10">Book Consultation</span>
 
                 {/* Hover Green Animation Layer */}
                 <span
@@ -59,11 +60,11 @@ const Hero = () => {
                 rounded-full
               "
                 ></span>
-              </button>
+              </button></Link>
               <button
                 className="
               relative overflow-hidden 
-              px-6 py-3 text-lg rounded-full 
+              md:px-6 md:py-3 py-1 px-3 md:text-lg rounded-full 
               flex items-center gap-3 
               bg-transparent border border-white
               transition-all duration-300
