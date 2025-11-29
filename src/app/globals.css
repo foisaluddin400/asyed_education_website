@@ -23,3 +23,8 @@ body {
 li{
   list-style: none;
 }
+
+
+.clip-diagonal {
+  clip-path: polygon(40% 0%, 100% 0%, 100% 100%, 0% 100%);
+}

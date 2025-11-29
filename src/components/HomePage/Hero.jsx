@@ -1,36 +1,134 @@
 import Image from "next/image";
-import Link from "next/link";
-export const metadata = {
-  title: "JusBuy Website",
-  description: "E-commerce",
-};
+import hero from "../../../public/img/bannar1.jpg";
+import icon1 from "../../../public/img/icon1.png";
+import icon2 from "../../../public/img/icon2.png";
+import icon3 from "../../../public/img/icon4.png";
+import { FaArrowRight } from "react-icons/fa";
+
 const Hero = () => {
   return (
-    <div className=" bg-white lg:mb-28 mb-10">
-      <div className="lg:grid grid-cols-5 gap-6">
-        <div className="col-span-1 border-r ">
-          <div className="flex flex-col gap-2 pl-4 lg:pt-11 lg:bg-white bg-slate-100 py-5 lg:py-0">
-          
-            <Link href={'allnewproduct'}><li>Woman&apos;s Fashion</li></Link>
-            <Link href={'allnewproduct'}><li>Men&apos;s Fashion</li></Link>
-            <Link href={'allnewproduct'}> <li>Electronics</li></Link>
-            <Link href={'allnewproduct'}><li>Home & Lifestyle</li></Link>
-            <Link href={'allnewproduct'}><li>Medicine</li></Link>
-            <Link href={'allnewproduct'}><li>Sports & Outdoor</li></Link>
-            <Link href={'allnewproduct'}><li>Baby&apos;s & Toys</li></Link>
-            <Link href={'allnewproduct'}><li>Groceries & pets</li></Link>
-            <Link href={'allnewproduct'}><li>Health & Beauty</li></Link>
+    <div>
+      <div className="relative w-full h-[500px] md:h-[650px] overflow-hidden">
+        {/* Background Image using Next/Image */}
+        <Image
+          src={hero}
+          alt="Hero Banner"
+          fill
+          priority
+          className="object-cover object-center"
+        />
+
+        {/* Gradient Overlay */}
+        <div className="absolute  inset-0 bg-gradient-to-r from-primary  to-[#000000b9] opacity-90"></div>
+
+        {/* Content */}
+        <div className="relative   flex items-center h-full container m-auto text-white">
+          <div>
+            <h1 className=" leading-tight">
+              <span className="text-5xl">
+                Smart, Trusted Tutoring <br /> for Every Student
+              </span>{" "}
+              <br />
+              <p className="py-3">
+                Track Your Child’s Learning Journey – Book Tutors, View
+                Progress, Stay Connected
+              </p>
+            </h1>
+
+            <div className="mt-11 flex gap-4">
+              <button
+                className="
+              relative overflow-hidden 
+              px-6 py-3 text-lg rounded-full 
+              flex items-center gap-3 
+              bg-accent text-white
+              transition-all duration-300
+              group
+            "
+              >
+                <span className="relative z-10">Book Free Consultation</span>
+
+                {/* Hover Green Animation Layer */}
+                <span
+                  className="
+                absolute inset-0 
+                bg-primary  
+                translate-x-[-101%] 
+                group-hover:translate-x-0 
+                transition-transform duration-500 
+                rounded-full
+              "
+                ></span>
+              </button>
+              <button
+                className="
+              relative overflow-hidden 
+              px-6 py-3 text-lg rounded-full 
+              flex items-center gap-3 
+              bg-transparent border border-white
+              transition-all duration-300
+              group
+            "
+              >
+                <span className="relative z-10">Learn More</span>
+
+                {/* Hover Green Animation Layer */}
+                <span
+                  className="
+                absolute inset-0 
+                bg-accent
+                border border-transparent 
+                translate-x-[-101%] 
+                group-hover:translate-x-0 
+                transition-transform duration-500 
+                rounded-full
+              "
+                ></span>
+              </button>
+            </div>
           </div>
         </div>
-        <div className="col-span-4 lg:pt-11 lg:lg:pl-5 m-4 lg:m-0">
+      </div>
+      <div className="container mt-11 rounded-md text-white bg-[#036659] m-auto grid grid-cols-1 md:grid-cols-3 gap-6 py-7 px-5">
+        {/* Single Feature Item */}
+        <div className="flex items-start gap-4">
+          <div className="bg-[#148878] p-5 rounded-full">
+            <Image src={icon1} alt="icon1" width={60} height={60} />
+          </div>
           <div>
-            <Image
-              alt="logo"
-              src="/img/banner.png"
-              height={400}
-              width={800}
-              className="w-full"
-            />
+            <h1 className="text-xl font-semibold">Learn The Latest Skills</h1>
+            <p className="text-gray-400">
+              Contrary to popular belief, Lorem Ipsum is not simply random text.
+              It has roots in a BC, making it over 2000 years old.
+            </p>
+          </div>
+        </div>
+
+        {/* Feature 2 */}
+        <div className="flex items-start gap-4">
+          <div className="bg-[#148878] p-5 rounded-full">
+            <Image src={icon2} alt="icon1" width={60} height={60} />
+          </div>
+          <div>
+            <h1 className="text-xl font-semibold">Get Ready For a Career</h1>
+            <p className="text-gray-400">
+              Contrary to popular belief, Lorem Ipsum is not simply random text.
+              It has roots in a BC, making it over 2000 years old.
+            </p>
+          </div>
+        </div>
+
+        {/* Feature 3 */}
+        <div className="flex items-start gap-4">
+          <div className="bg-[#148878] p-5 rounded-full">
+            <Image src={icon3} alt="icon1" width={60} height={60} />
+          </div>
+          <div>
+            <h1 className="text-xl font-semibold">Earn a Certificate</h1>
+            <p className="text-gray-400">
+              Contrary to popular belief, Lorem Ipsum is not simply random text.
+              It has roots in a BC, making it over 2000 years old.
+            </p>
           </div>
         </div>
       </div>

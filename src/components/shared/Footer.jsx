@@ -5,8 +5,8 @@ import React from 'react'
 import { FiPhone } from "react-icons/fi";
 export default function Footer() {
   return (
-    <div className='mt-28'>
-      <div className='bg-[#CB4E01] text-white;
+    <div className=''>
+      <div className='bg-primary text-white;
 '>
       <footer className="md:grid md:grid-cols-3 gap-6 text-white p-10">
   <aside>
@@ -22,6 +22,7 @@ export default function Footer() {
     <Link href='/contact'><h1 className=" link-hover">Contuct Us</h1></Link>
     <Link href='/privacy'><h1 className=" link-hover">privacy & Policy</h1></Link>
     <Link href='/terms'><h1 className=" link-hover">Terms & Condition</h1></Link>
+    <Link href='/faq'><h1 className=" link-hover">Faq</h1></Link>
   </nav>
   <nav className='space-y-5 text-neutral-300' >
   <h6 className="text-2xl text-white">Help & Support</h6>
