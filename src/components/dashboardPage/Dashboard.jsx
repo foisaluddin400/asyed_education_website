@@ -6,6 +6,7 @@ import { EyeOutlined, DeleteOutlined } from "@ant-design/icons";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { RiUserForbidLine } from "react-icons/ri";
 import Image from "next/image";
+import Calender from "./Calender";
 
 const Dashboard = () => {
   // Sample Data
@@ -54,7 +55,7 @@ const Dashboard = () => {
     <div>
       {/* Summary Cards */}
       <div className="grid grid-cols-2 gap-4">
-        <div className="flex gap-4 items-center bg-white p-6 py-16 border rounded">
+        <div className="flex gap-4 items-center bg-white p-6  border rounded">
           <div className="bg-yellow-100 w-[55px] rounded-full h-[55px] flex justify-center items-center text-3xl">
             <HiOutlineUserGroup className="text-yellow-500" />
           </div>
@@ -74,6 +75,8 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+
+      <Calender></Calender>
 
       {/* Child Section */}
       <div>
