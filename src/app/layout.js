@@ -24,7 +24,7 @@ export const metadata = {
   title: "Education Website",
   description: "Education",
 };
-
+//fdsf
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="product">
