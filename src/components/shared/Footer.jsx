@@ -7,13 +7,13 @@ export default function Footer() {
   return (
     <div className="">
       <div
-        className="bg-primary text-white;
+        className="bg-black text-white;
 "
       >
         <footer className="md:grid md:grid-cols-3 gap-6 text-white p-10">
           <aside>
             <Image
-              src="/img/logo2.png"
+              src="/img/logo4.png"
               className="w-[150px] mb-5"
               width={100}
               height={50}

@@ -9,7 +9,7 @@ import Link from "next/link";
 const Hero = () => {
   return (
     <div>
-      <div className="relative w-full h-[500px] md:h-[650px] overflow-hidden">
+      <div className="relative  w-full h-[500px] md:h-[650px] overflow-hidden">
         {/* Background Image using Next/Image */}
         <Image
           src={hero}
