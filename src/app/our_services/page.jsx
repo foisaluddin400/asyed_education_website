@@ -72,7 +72,7 @@ export default function OurServicespage() {
         />
 
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary  to-[#000000b9] opacity-90"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-primary  to-[#000000b9] opacity-80"></div>
 
         {/* Content */}
         <div className="relative px-3  flex items-center h-full container m-auto text-white">

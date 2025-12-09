@@ -20,7 +20,7 @@ const Hero = () => {
         />
 
         {/* Gradient Overlay */}
-        <div className="absolute  inset-0 bg-gradient-to-r from-primary  to-[#000000b9] opacity-90"></div>
+        <div className="absolute  inset-0 bg-gradient-to-r from-primary  to-[#000000b9] opacity-80"></div>
 
         {/* Content */}
         <div className="relative px-3  flex items-center h-full container m-auto text-white">
@@ -90,7 +90,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className="container mt-11 rounded-md text-white bg-[#036659] m-auto grid grid-cols-1 md:grid-cols-3 gap-6 py-7 px-5">
+      <div className="container mt-11 rounded-md text-white bg-primary m-auto grid grid-cols-1 md:grid-cols-3 gap-6 py-7 px-5">
         {/* Single Feature Item */}
         <div className="flex items-start gap-4">
           <div className="bg-[#148878] p-5 rounded-full">

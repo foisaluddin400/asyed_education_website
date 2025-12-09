@@ -1,71 +1,94 @@
-import Image from 'next/image';
-import Link from 'next/link';
-
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+import backgroundImage from "../../../public/img/background5.jpg";
 
 export default function SignIn() {
   return (
-    <div className="flex h-screen items-center justify-center bg-gradient-to-r from-white via-orange-50 to-white">
-      <div className="md:flex md:w-3/4 md:max-w-5xl rounded-lg overflow-hidden m-4 md:m-0">
-        
-        
-        <div className="md:w-1/2 p-8 flex justify-center items-center">
-          <div className="text-center">
-            <div className=" text-white ">
-              <Image className='w-[400px]' src={'/img/login.png'} width={500} height={200} alt='login'/>
-            </div>
-          </div>
+    <div
+      className="min-h-screen w-full flex items-center justify-center bg-cover bg-center backdrop-blur-2xl"
+      style={{ backgroundImage: `url(${backgroundImage.src})` }}
+    >
+      {/* LOGIN CARD */}
+      <div className="w-[500px] bg-secondary shadow-2xl rounded-md  border border-gray-300 relative">
+        {/* TOP CIRCLE ICON */}
+        <div
+          className="mt-4 flex justify-center
+           "
+        >
+          <Image
+            src="/img/logo4.png"
+            width={105}
+            height={100}
+            alt="icon"
+            className="object-contain"
+          />
         </div>
 
-        <div className="md:w-1/2 ">
-         <div className='flex justify-center mb-6'>
-         <Image className='w-[200px]' src={'/img/loginl.png'} width={300} height={70} alt='login'/>
-         </div>
-          <h2 className="text-2xl text-center my-11  font-bold text-gray-800 mb-8">Great to have you back!</h2>
-          
-          <form className="space-y-6">
+        {/* TITLE */}
+        <h1 className="text-center text-3xl font-serif mt-3 text-green-900">
+          Green Login Form
+        </h1>
+
+        {/* GREEN TRIANGLE AREA */}
+        <div className="relative mt-7 px-10 py-10">
+          <div className="absolute -mr-[1px] inset-0 bg-primary clip-tri"></div>
+
+          <form className="relative space-y-6">
             <div>
-              <label htmlFor="email" className="block text-sm font-semibold text-gray-700">User Name or Email</label>
+              <label className="text-sm font-semibold text-black flex items-center gap-1">
+                <span>🔒</span> Username
+              </label>
               <input
-                type="email"
-                id="email"
-                className="mt-1 w-full p-2 border  border-black rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 bg-[#00000000]"
-                placeholder="Email"
-                required
+                type="text"
+                className="w-full mt-1 p-2 border text-black bg-white rounded 
+                  focus:ring-2 focus:ring-green-700 outline-none shadow-sm"
               />
-            
             </div>
 
             <div>
-              <div className='flex justify-between'>
-              <label htmlFor="password" className="block text-sm font-semibold text-gray-700">Password</label>
-              <Link href="/signIn/forgot" className="text-sm 
-              
-              text-orange-500 hover:underline">Forgot</Link>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="password"
-                  id="password"
-                  className="mt-1 w-full p-2 border border-black bg-[#00000000] rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
-                  placeholder="Password"
-                  required
-                />
-                
-              </div>
+              <label className="text-sm font-semibold text-green-900 flex items-center gap-1">
+                <span>🔑</span> Password
+              </label>
+              <input
+                type="password"
+                className="w-full mt-1 p-2 border text-black bg-white rounded 
+                  focus:ring-2 focus:ring-green-700 outline-none shadow-sm"
+              />
             </div>
 
-            <div className="flex items-center justify-center">
-              <p className="text-sm text-gray-600 text-center">Don&apos;t have an account? <Link href="/signUp" className="text-orange-500   hover:underline">Register</Link></p>
+            <div className="flex justify-between text-sm">
+              <label className="flex items-center gap-2 text-gray-800">
+                <input type="checkbox" />
+                Show Password
+              </label>
+              <Link href="/signIn/forgot" className="text-gray-900 underline">
+                Forgot Password?
+              </Link>
             </div>
 
-            <button
-              type="submit"
-              className="w-full py-2 px-4 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400"
-            >
-              SIGN IN
-            </button>
+            <Link href="/signUp/done">
+              <button
+                className="w-full mt-2 bg-primary text-white py-2 rounded 
+                   shadow hover:bg-teal-950 tracking-widest border border-teal-400"
+              >
+                LOGIN
+              </button>
+            </Link>
+
+            <p className="text-center text-sm text-gray-600 mt-6">
+          Don’t have an account?{" "}
+          <Link href="/signUp" className="text-blue-600 cursor-pointer">
+            Sign Up
+          </Link>
+        </p>
           </form>
         </div>
+
+        {/* FOOTER */}
+        <p className="text-center text-xs py-4 text-gray-700">
+          © 2018 Green Login Form . All Rights Reserved | Design by W3layouts
+        </p>
       </div>
     </div>
   );

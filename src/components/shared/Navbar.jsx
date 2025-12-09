@@ -28,8 +28,8 @@ export const Navbar = () => {
   const userMenuItems = [
     { label: "Profile", path: "/profilePage" },
     { label: "Dashboard", path: "/dashboard" },
-    { label: "Sign Up", path: "/auth/signUp" },
-    { label: "Sign In", path: "/auth/login" },
+    { label: "Sign Up", path: "/signUp" },
+    { label: "Sign In", path: "/signIn" },
     { label: "Log Out", path: "/logout" },
   ];
 
@@ -41,10 +41,11 @@ export const Navbar = () => {
           <div className="">
             <Link href="/" className="text-2xl font-bold">
               <Image
+              className="w-[80px]"
                 alt="logo"
-                src="/img/logo3.png"
+                src="/img/logo4.png"
                 height={100}
-                width={110}
+                width={400}
                 priority
               />
             </Link>
@@ -113,7 +114,7 @@ export const Navbar = () => {
         {/* Background Layer (Overlay) */}
         <div className="absolute inset-0 flex pointer-events-none">
           <div className="w-[60%]"></div>
-          <div className="w-[40%] bg-[#036659] clip-diagonal"></div>
+          <div className="w-[40%] bg-[#09814f] clip-diagonal"></div>
         </div>
 
         {/* NAVBAR CONTENT */}
@@ -124,7 +125,7 @@ export const Navbar = () => {
               <div className="flex items-center space-x-4 lg:space-x-8">
                 <Link
                   href="/"
-                  className="bg-[#036659] p-2 rounded-full text-2xl lg:text-3xl"
+                  className="bg-[#077252] p-2 rounded-full text-2xl lg:text-3xl"
                 >
                   <IoIosHome />
                 </Link>
@@ -198,7 +199,7 @@ export const Navbar = () => {
 
       {/* Mobile Drawer */}
       <Drawer
-        style={{ backgroundColor: "#004F44", color: "white" }}
+        style={{ backgroundColor: "#00935F", color: "white" }}
         title={
           <Image
             src="/img/logo2.png"

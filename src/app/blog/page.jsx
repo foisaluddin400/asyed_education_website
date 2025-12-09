@@ -23,7 +23,7 @@ export default function Page() {
         />
 
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary  to-[#000000b9] opacity-90"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-primary  to-[#000000b9] opacity-80"></div>
 
         {/* Content */}
         <div className="relative  px-3 flex items-center h-full container m-auto text-white">
@@ -110,7 +110,7 @@ export default function Page() {
                   content.
                 </p>
 
-                <button className="mt-4 bg-[#0a6b63] text-white px-5 py-2 rounded-lg hover:bg-[#095d56] transition text-sm font-medium">
+                <button className="mt-4 bg-primary text-white px-5 py-2 rounded-lg hover:bg-[#095d56] transition text-sm font-medium">
                   Learn more
                 </button>
               </div>

@@ -24,7 +24,7 @@ const Calender = () => {
     return isTuitionDay ? (
       <div
         className="flex justify-center items-center w-10 h-10 mx-auto rounded-full text-white"
-        style={{ backgroundColor: "#004F44" }}
+        style={{ backgroundColor: "#00935F" }}
       >
         <span>{value.date()}</span>
       </div>
