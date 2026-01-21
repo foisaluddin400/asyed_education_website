@@ -31,3 +31,19 @@ li{
 .clip-tri {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%);
 }
+
+
+.raw-spinner {
+      width: 18px;
+      height: 18px;
+      border: 2.5px solid rgba(255, 255, 255, 0.4);
+      border-top-color: #ffffff;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }

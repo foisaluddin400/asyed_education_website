@@ -1,9 +1,9 @@
+import Loading from '@/components/Loading'
 import React from 'react'
-import Register from './Register'
 
 const page = () => {
   return (
-    <Register></Register>
+    <div>      <Loading></Loading></div>
   )
 }
 

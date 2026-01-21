@@ -21,6 +21,9 @@ module.exports = {
         style: ["var(--style-display)"],
       },
     },
+    animation: {
+  'spin-slow': 'spin 2.8s linear infinite',
+},
   },
   plugins: [],
 };

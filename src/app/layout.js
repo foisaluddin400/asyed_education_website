@@ -2,8 +2,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import ClientLayout from "./layout/ClientLayout";
 import ReduxProvider from "@/provider/ReduxProvider";
-
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const style = localFont({
   src: "../font/Nunito-Regular.ttf",
   variable: "--style-display",
@@ -33,10 +33,21 @@ export default function RootLayout({ children }) {
       >
         <ReduxProvider>
           <div className="font-style">
+               <ToastContainer
+              position="top-center"
+              autoClose={3000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
             <ClientLayout>{children}</ClientLayout>
           </div>
         </ReduxProvider>
       </body>
     </html>
-  );
+  ); 
 }
