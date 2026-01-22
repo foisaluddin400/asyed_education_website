@@ -1,3 +1,6 @@
+"use client";
+import { baseUrl } from "@/redux/Api/baseApi";
+import { useGetAllVideosQuery } from "@/redux/Api/videoApi";
 import React from "react";
 
 const videos = [
@@ -24,6 +27,9 @@ const videos = [
 ];
 
 const VideoSection = () => {
+       const { data: videosData, isLoading } = useGetAllVideosQuery();
+       const videos = videosData?.data || [];
+       console.log("Videos Data:", videosData?.data);
   return (
     <div className="max-w-7xl mx-auto md:px-6 px-3 py-20">
       {/* Heading */}
@@ -39,27 +45,32 @@ const VideoSection = () => {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-        {videos.map((v, i) => (
-          <div key={i} className="space-y-4">
-            <h2 className="text-xl font-semibold">{v.title}</h2>
-            <p className="text-gray-600">{v.desc}</p>
+     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+  {isLoading ? (
+    <div className="col-span-1 md:col-span-2 text-center py-20 text-gray-500">
+      Video is loading...
+    </div>
+  ) : (
+    videos.map((v, i) => (
+      <div key={i} className="space-y-4">
+        <h2 className="text-xl font-semibold">{v?.title}</h2>
+        <p className="text-gray-600">{v?.description}</p>
 
-            {/* Video */}
-            <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-              <iframe
-                width="100%"
-                height="260"
-                src={v.url}
-                title="Video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="rounded-xl"
-              ></iframe>
-            </div>
-          </div>
-        ))}
+        <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+          <video
+            className="w-full h-[260px] rounded-xl object-cover"
+            src={`${baseUrl}/${v?.videoUrl}`}
+            controls
+            muted
+            // autoPlay
+          />
+        </div>
       </div>
+    ))
+  )}
+</div>
+
+
     </div>
   );
 };
