@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import React from "react";
 import hero from "../../../public/img/bannar1.jpg";
@@ -8,7 +10,14 @@ import icon1 from "../../../public/img/icon1.png";
 import icon2 from "../../../public/img/icon2.png";
 import icon3 from "../../../public/img/icon4.png";
 import { RiArrowRightWideLine } from "react-icons/ri";
+import { useGetAboutUsQuery } from "@/redux/Api/aboutUsApi";
+
 const page = () => {
+
+  const { data } = useGetAboutUsQuery();
+  const sanitizedContent = data?.data?.content;
+
+  console.log("About Us Data:", data?.data?.content);
   return (
     <div>
       <div className="relative w-full h-[500px] md:h-[650px] overflow-hidden">
@@ -85,36 +94,13 @@ const page = () => {
             </div>
           </div>
           <div className="pt-6 lg:pt-0">
-            <h1 className="text-2xl font-semibold mb-3">
-              About Seeds of Learning
-            </h1>
+      
 
-            <p>
-              Seeds of Learning is an innovative educational platform dedicated
-              to helping students reach their full potential through
-              personalized tutoring, mentorship, and academic support. We
-              believe that every learner is unique, and our approach focuses on
-              creating customized learning experiences that build confidence,
-              curiosity, and lifelong learning skills. With a team of passionate
-              educators and mentors, we aim to bridge the gap between
-              traditional education and modern learning needs. Whether it’s
-              improving grades, mastering new skills, or preparing for academic
-              success, we’re here to guide every step of the way. At Seeds of
-              Learning, we don’t just teach — we help students grow, thrive, and
-              succeed for life.With a team of passionate educators and mentors,
-              we aim to bridge the gap between traditional education and modern
-              learning needs. Whether it’s improving grades, mastering new
-              skills, or preparing for academic success, we’re here to guide
-              every step of the way. At Seeds of Learning, we don’t just teach —
-              we help students grow, thrive, and succeed for life.With a team of
-              passionate educators and mentors, we aim to bridge the gap between
-              traditional education and modern learning needs. Whether it’s
-              improving grades, mastering new skills, or preparing for academic
-              success, we’re here to guide every step of the way. At Seeds of
-              Learning, we don’t just teach — we help students grow, thrive, and
-              succeed for life.
-            </p>
-          </div>
+      <p
+        className="text-gray-700"
+        dangerouslySetInnerHTML={{ __html: sanitizedContent }}
+      />
+    </div>
         </div>
       </div>
 
