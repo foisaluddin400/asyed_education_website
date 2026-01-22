@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react";
 import Image from "next/image";
 import hero from "../../../public/img/bannar1.jpg";
@@ -6,14 +8,23 @@ import blog2 from "../../../public/img/service2.jpg";
 import blog3 from "../../../public/img/service3.jpg";
 import blog4 from "../../../public/img/service4.jpg";
 import { RiArrowRightWideLine } from "react-icons/ri";
+import { useGetAllBlogsQuery } from "@/redux/Api/blogApi";
+import { baseUrl, fileBaseurl } from "@/redux/Api/baseApi";
 
 const blogs = [blog1, blog2, blog3, blog4, blog1, blog2];
 
-export default function Page() {
+export default function BlogPage() {
+
+
+     const {data:blogData, isLoading} = useGetAllBlogsQuery();
+     console.log("blogData===>",blogData?.data?.items)
+     const blogs = blogData?.data?.items || [];
+
   return (
     <div>
       <div className="relative w-full h-[500px] md:h-[650px] overflow-hidden">
         {/* Background Image using Next/Image */}
+       
         <Image
           src={hero}
           alt="Hero Banner"
@@ -89,8 +100,9 @@ export default function Page() {
             >
               {/* Image */}
               <div className="w-full h-56 relative">
+                  
                 <Image
-                  src={img}
+                  src={`${baseUrl}/${img?.image.replace(/\\/g, "/")}`}
                   alt="Blog image"
                   fill
                   className="object-cover"
@@ -100,15 +112,12 @@ export default function Page() {
               {/* Content */}
               <div className="p-6 space-y-3">
                 <h3 className="text-lg font-semibold text-gray-800">
-                  Stay informed with the latest insights
+                  {img?.title}
                 </h3>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                  Discover valuable articles covering education, skill
-                  development, career guidance, tech trends, and more. Our blog
-                  section is designed to help learners, educators, and
-                  professionals grow with high-quality, easy-to-understand
-                  content.
+                  {img?.content?.replace(/<\/?[^>]+(>|$)/g, "")}
                 </p>
+
 
                 <button className="mt-4 bg-primary text-white px-5 py-2 rounded-lg hover:bg-[#095d56] transition text-sm font-medium">
                   Learn more

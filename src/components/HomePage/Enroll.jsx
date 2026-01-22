@@ -34,7 +34,7 @@ export default function Enroll() {
           <h1 className="md:text-7xl text-4xl font-bold leading-tight">
             How To Enroll Your Child <br /> To a Class
           </h1>
-          <div className="flex justify-center mt-11">
+          <div className="hidden justify-center mt-11">
             <button
               className="
              relative overflow-hidden 

@@ -79,13 +79,13 @@ export const Navbar = () => {
                   {" "}
                   <button
                     className="
-  relative overflow-hidden 
-  px-6 py-3 text-lg rounded-full 
-  flex items-center gap-3 
-  bg-accent text-white
-  transition-all duration-300
-  group
-"
+                        relative overflow-hidden 
+                          px-6 py-3 text-lg rounded-full 
+                        flex items-center gap-3 
+                        bg-accent text-white
+                        transition-all duration-300
+                        group
+                         "
                   >
                     <span className="relative z-10">Consultation</span>
                     <FaArrowRight className="relative z-10" />
@@ -93,13 +93,13 @@ export const Navbar = () => {
                     {/* Hover Green Animation Layer */}
                     <span
                       className="
-    absolute inset-0 
-    bg-primary  
-    translate-x-[-102%] 
-    group-hover:translate-x-0 
-    transition-transform duration-500 
-    rounded-full
-  "
+                          absolute inset-0 
+                          bg-primary  
+                          translate-x-[-102%] 
+                          group-hover:translate-x-0 
+                          transition-transform duration-500 
+                          rounded-full
+                        "
                     ></span>
                   </button>
                 </Link>
@@ -122,7 +122,7 @@ export const Navbar = () => {
           <div className="container mx-auto px-4">
             <nav className="flex items-center justify-between py-3">
               {/* Left Side - Desktop: Home icon + Menu, Mobile: Home icon only */}
-              <div className="flex items-center space-x-4 lg:space-x-8">
+              <div className="flex w-full items-center space-x-4 lg:space-x-8">
                 <Link
                   href="/"
                   className="bg-[#077252] p-2 rounded-full text-2xl lg:text-3xl"
@@ -131,7 +131,7 @@ export const Navbar = () => {
                 </Link>
 
                 {/* Desktop Menu Items */}
-                <div className="hidden lg:flex items-center space-x-8">
+                <div className="hidden lg:flex justify-end w-full  items-center space-x-8">
                   {navItems.map((item, idx) => (
                     <Link
                       key={idx}
@@ -149,7 +149,8 @@ export const Navbar = () => {
               </div>
 
               {/* Right Side - Desktop: User Dropdown, Mobile: Menu Icon */}
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 lg:hidden">
+
                 {/* Desktop User Dropdown */}
                 <div className="hidden lg:block relative">
                   <button
@@ -239,7 +240,7 @@ export const Navbar = () => {
         <div className="border-t border-gray-600 my-4"></div>
 
         {/* User Menu Items */}
-        <div className="flex flex-col space-y-2">
+        <div className=" flex-col space-y-2 hidden">
           <h3 className="text-gray-400 text-sm font-semibold mb-2 px-4">
             ACCOUNT
           </h3>

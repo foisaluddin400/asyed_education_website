@@ -20,7 +20,7 @@ const ScheduleFree = () => {
               expert advisors who will
             </p>
 
-            <div className="mt-8 flex justify-center gap-4">
+            <div className="mt-8 hidden justify-center gap-4">
               <button
                 className="
              relative overflow-hidden 

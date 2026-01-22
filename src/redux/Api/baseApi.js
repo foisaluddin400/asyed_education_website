@@ -4,6 +4,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 // const baseUrl = "https://api.kidsknowrights.com";  
 export const baseUrl = "http://10.10.20.22:4000/api/v1";
+export const fileBaseurl = "http://10.10.20.22:4000/"
 // Helper function to get the token
 const getToken = () => {
   if (typeof window === "undefined") {
@@ -26,7 +27,7 @@ export const baseApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ["profile", "event", "videos", "aboutUs"],
+  tagTypes: ["profile", "event", "videos", "aboutUs", "Blogs","Videos"],
   endpoints: () => ({}),
 });
 

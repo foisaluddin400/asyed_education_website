@@ -12,7 +12,7 @@ import icon3 from "../../../public/img/icon4.png";
 import { RiArrowRightWideLine } from "react-icons/ri";
 import { useGetAboutUsQuery } from "@/redux/Api/aboutUsApi";
 
-const page = () => {
+const AboutUs = () => {
 
   const { data } = useGetAboutUsQuery();
   const sanitizedContent = data?.data?.content;
@@ -79,7 +79,7 @@ const page = () => {
         </div>
       </div>
       <div className="bg-green-50 ">
-        <div className=" lg:grid grid-cols-2 gap-4 container px-4 lg-px-0 m-auto lg:my-20 py-11">
+        <div className=" lg:grid grid-cols-2 gap-10 container px-4 lg-px-0 m-auto lg:my-20 py-11">
           <div>
             <Image
               className="h-[300px] object-cover pb-4"
@@ -94,12 +94,10 @@ const page = () => {
             </div>
           </div>
           <div className="pt-6 lg:pt-0">
-      
-
-      <p
-        className="text-gray-700"
-        dangerouslySetInnerHTML={{ __html: sanitizedContent }}
-      />
+         <p
+          className="text-gray-700"
+          dangerouslySetInnerHTML={{ __html: sanitizedContent }}
+        />
     </div>
         </div>
       </div>
@@ -154,4 +152,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default AboutUs;
