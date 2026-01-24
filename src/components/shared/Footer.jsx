@@ -29,7 +29,7 @@ export default function Footer() {
 
           <nav className="flex flex-col space-y-5 text-neutral-300 py-11 md:py-0">
             <h6 className="text-2xl text-white">Information</h6>
-            <Link href="/about">
+            <Link href="about_us">
               <h1 className=" link-hover">About Us</h1>
             </Link>
             <Link href="/contact">

@@ -9,22 +9,23 @@ import blog3 from "../../../public/img/service3.jpg";
 import blog4 from "../../../public/img/service4.jpg";
 import { RiArrowRightWideLine } from "react-icons/ri";
 import { useGetAllBlogsQuery } from "@/redux/Api/blogApi";
-import { baseUrl, fileBaseurl } from "@/redux/Api/baseApi";
+import { baseUrl } from "@/redux/Api/baseApi";
+import Link from "next/link";
 
 const blogs = [blog1, blog2, blog3, blog4, blog1, blog2];
 
 export default function BlogPage() {
 
 
-     const {data:blogData, isLoading} = useGetAllBlogsQuery();
-     console.log("blogData===>",blogData?.data?.items)
-     const blogs = blogData?.data?.items || [];
+  const { data: blogData, isLoading } = useGetAllBlogsQuery();
+  console.log("blogData===>", blogData?.data?.items)
+  const blogs = blogData?.data?.items || [];
 
   return (
     <div>
       <div className="relative w-full h-[500px] md:h-[650px] overflow-hidden">
         {/* Background Image using Next/Image */}
-       
+
         <Image
           src={hero}
           alt="Hero Banner"
@@ -81,7 +82,7 @@ export default function BlogPage() {
           </div>
         </div>
       </div>
-      <section className="py-16 md:px-4 px-3 max-w-7xl mx-auto">
+      <section className="py-16 md:px-4 px-3 container mx-auto">
         {/* Heading */}
         <div className="text-center mb-14">
           <h1 className="md:text-4xl text-3xl font-bold text-gray-900">Blog</h1>
@@ -100,7 +101,7 @@ export default function BlogPage() {
             >
               {/* Image */}
               <div className="w-full h-56 relative">
-                  
+
                 <Image
                   src={`${baseUrl}/${img?.image.replace(/\\/g, "/")}`}
                   alt="Blog image"
@@ -110,18 +111,18 @@ export default function BlogPage() {
               </div>
 
               {/* Content */}
-              <div className="p-6 space-y-3">
+              <div className="p-6 space-y-3 flex flex-col items-start">
                 <h3 className="text-lg font-semibold text-gray-800">
                   {img?.title}
                 </h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
+                <p className="text-sm text-gray-600 leading-relaxed mb-4">
                   {img?.content?.replace(/<\/?[^>]+(>|$)/g, "")}
                 </p>
 
 
-                <button className="mt-4 bg-primary text-white px-5 py-2 rounded-lg hover:bg-[#095d56] transition text-sm font-medium">
+                <Link href={`/blog/${img?._id}`} className="mt-4 bg-primary text-white px-5 py-2 rounded-lg hover:bg-[#095d56] transition text-sm font-medium ">
                   Learn more
-                </button>
+                </Link>
               </div>
             </div>
           ))}

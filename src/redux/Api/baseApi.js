@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 // const baseUrl = "https://api.kidsknowrights.com";  
 export const baseUrl = "http://10.10.20.22:4000/api/v1";
-export const fileBaseurl = "http://10.10.20.22:4000/"
+export const fileBaseurl = "http://10.10.20.22:4000"
 // Helper function to get the token
 const getToken = () => {
   if (typeof window === "undefined") {
@@ -27,7 +27,7 @@ export const baseApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ["profile", "event", "videos", "aboutUs", "Blogs","Videos"],
+  tagTypes: ["profile", "event", "videos", "aboutUs", "Blogs", "Videos", "legal"],
   endpoints: () => ({}),
 });
 
@@ -45,10 +45,10 @@ export const fetchServerData = async (endpoint) => {
     },
     {
       signal: new AbortController().signal,
-      dispatch: () => {},
+      dispatch: () => { },
       getState: () => ({}),
       endpoint: "",
-      abort: () => {},
+      abort: () => { },
       type: "query",
       extra: undefined,
     },
