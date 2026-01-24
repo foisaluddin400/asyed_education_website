@@ -36,7 +36,7 @@ export const Navbar = () => {
   return (
     <header className="w-full">
       {/* Top Banner */}
-      <div className="bg-secondary border-b border-gray-400 text-black py-5">
+      <div className="bg-secondary border-b border-gray-400 text-black py-2">
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-sm gap-4">
           <div className="">
             <Link href="/" className="text-2xl font-bold">
@@ -53,23 +53,23 @@ export const Navbar = () => {
           <div className="hidden md:block">
             <div className="flex gap-6 lg:gap-11 flex-wrap justify-center">
               <div className="flex items-center gap-3">
-                <div className="bg-stone-900 text-white w-[50px] h-[50px] flex justify-center text-3xl items-center rounded-full">
+                <div className="bg-stone-900 text-white w-[40px] h-[40px] flex justify-center text-3xl items-center rounded-full">
                   <IoMailUnreadOutline />
                 </div>
                 <div>
-                  <h1 className="text-sm lg:text-base">Email Us Anytime</h1>
-                  <h1 className="font-semibold text-base lg:text-lg">
+                  <h1 className="text-sm lg:text-sm">Email Us Anytime</h1>
+                  <h1 className="font-semibold text-sm lg:text-sm">
                     info@gmail.com
                   </h1>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="bg-stone-900 text-white w-[50px] h-[50px] flex justify-center text-3xl items-center rounded-full">
+                <div className="bg-stone-900 text-white w-[40px] h-[40px] flex justify-center text-3xl items-center rounded-full">
                   <CiPhone />
                 </div>
                 <div>
-                  <h1 className="text-sm lg:text-base">Call Us Anytime</h1>
-                  <h1 className="font-semibold text-base lg:text-lg">
+                  <h1 className="text-sm">Call Us Anytime</h1>
+                  <h1 className="font-semibold text-sm">
                     +(000)1235 56789
                   </h1>
                 </div>
