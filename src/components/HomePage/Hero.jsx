@@ -96,9 +96,9 @@ const Hero = () => {
           <div className="bg-[#148878] p-5 rounded-full">
             <Image src={icon1} alt="icon1" width={60} height={60} />
           </div>
-          <div>
+          <div className="flex flex-col gap-2">
             <h1 className="text-xl font-semibold">Learn The Latest Skills</h1>
-            <p className="text-gray-400">
+            <p className="text-white">
               Contrary to popular belief, Lorem Ipsum is not simply random text.
               It has roots in a BC, making it over 2000 years old.
             </p>
@@ -110,9 +110,9 @@ const Hero = () => {
           <div className="bg-[#148878] p-5 rounded-full">
             <Image src={icon2} alt="icon1" width={60} height={60} />
           </div>
-          <div>
+          <div className="flex flex-col gap-2">
             <h1 className="text-xl font-semibold">Get Ready For a Career</h1>
-            <p className="text-gray-400">
+            <p className="text-white">
               Contrary to popular belief, Lorem Ipsum is not simply random text.
               It has roots in a BC, making it over 2000 years old.
             </p>
@@ -124,9 +124,9 @@ const Hero = () => {
           <div className="bg-[#148878] p-5 rounded-full">
             <Image src={icon3} alt="icon1" width={60} height={60} />
           </div>
-          <div>
+          <div className="flex flex-col gap-2">
             <h1 className="text-xl font-semibold">Earn a Certificate</h1>
-            <p className="text-gray-400">
+            <p className="text-white">
               Contrary to popular belief, Lorem Ipsum is not simply random text.
               It has roots in a BC, making it over 2000 years old.
             </p>

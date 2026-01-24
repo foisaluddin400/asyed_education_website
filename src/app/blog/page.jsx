@@ -42,7 +42,7 @@ export default function BlogPage() {
           <div>
             <h1 className=" leading-tight">
               <span className="md:text-5xl text-3xl">Blogs</span> <br />
-              <p className="py-3 max-w-2xl text-gray-400">
+              <p className="py-3 max-w-2xl text-white">
                 With a team of experienced tutors, flexible learning options,
                 and data-driven progress tracking, we ensure that education is
                 not just about grades — it’s about growth, confidence, and
