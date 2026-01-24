@@ -88,10 +88,10 @@ const faq = baseApi.injectEndpoints({
 
       
 
-      postFeedback: builder.mutation({
+      sendContact: builder.mutation({
         query: (data) => {
           return {
-            url: "/feedback/create-feedback",
+            url: "/contact/submit",
             method: "POST",
             body: data,
           };
@@ -121,7 +121,7 @@ useUpdateProfileeMutation,
 useChangePasswordMutation,
 useGetprivecyConditionsQuery,
 useGetTermsContuctQuery,
-usePostFeedbackMutation,
+useSendContactMutation,
 useGetNotificationQuery,
 useGetLawQuery
 } = faq;
