@@ -11,11 +11,18 @@ import { RiInstagramFill } from "react-icons/ri";
 import { CiPhone } from "react-icons/ci";
 import { IoMailUnreadOutline } from "react-icons/io5";
 import { IoIosHome } from "react-icons/io";
+import { useGetContactQuery } from "@/redux/Api/blogApi";
 
 export const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const pathname = usePathname();
+  const { data: contactData } = useGetContactQuery();
+
+  const contactInfo = contactData?.data || {};
+  const email = contactInfo.email
+  const phone = contactInfo.phone
+
 
   const navItems = [
     { label: "Home", path: "/" },
@@ -59,7 +66,7 @@ export const Navbar = () => {
                 <div>
                   <h1 className="text-sm lg:text-sm">Email Us Anytime</h1>
                   <h1 className="font-semibold text-sm lg:text-sm">
-                    info@gmail.com
+                    {email}
                   </h1>
                 </div>
               </div>
@@ -70,12 +77,12 @@ export const Navbar = () => {
                 <div>
                   <h1 className="text-sm">Call Us Anytime</h1>
                   <h1 className="font-semibold text-sm">
-                    +(000)1235 56789
+                    {phone}
                   </h1>
                 </div>
               </div>
               <div>
-                <Link href={"/consultation"}>
+                <Link href={"/"}>
                   {" "}
                   <button
                     className="
@@ -87,7 +94,7 @@ export const Navbar = () => {
                         group
                          "
                   >
-                    <span className="relative z-10">Consultation</span>
+                    <span className="relative z-10">Login</span>
                     <FaArrowRight className="relative z-10" />
 
                     {/* Hover Green Animation Layer */}

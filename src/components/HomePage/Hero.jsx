@@ -37,7 +37,7 @@ const Hero = () => {
             </h1>
 
             <div className="mt-11 flex gap-2">
-              <Link href={'/consultation'}><button
+              <Link href={'/'}><button
                 className="
               relative overflow-hidden 
               md:px-6 px-2 md:py-3 py-1 md:text-lg rounded-full 
