@@ -12,11 +12,11 @@ import { HiArrowNarrowLeft, HiArrowNarrowRight } from "react-icons/hi";
 import { FaArrowRight } from "react-icons/fa";
 import { RiChatQuoteLine } from "react-icons/ri";
 import { useGetAllTestimonialsQuery } from "@/redux/Api/blogApi";
-import {  fileBaseurl } from "@/redux/Api/baseApi";
+import { fileBaseurl } from "@/redux/Api/baseApi";
 
 const Testimonials = () => {
   const { data: response } = useGetAllTestimonialsQuery();
-  const testimonials = response?.data || [];
+  const testimonials = response?.data?.items || (Array.isArray(response?.data) ? response.data : []);
   console.log("Testimonials Data:", testimonials);
 
 
@@ -133,9 +133,9 @@ const Testimonials = () => {
                           <div className="relative w-[60px] h-[60px]">
                             <Image
                               src={
-                                item?.authorImage?.startsWith("http")
-                                  ? item?.authorImage
-                                  : `${fileBaseurl}/${item?.authorImage}`
+                                item?.authorAvatar?.startsWith("http")
+                                  ? item?.authorAvatar
+                                  : `${fileBaseurl}/${item?.authorAvatar}`
                               }
                               alt={item?.authorName}
                               fill
