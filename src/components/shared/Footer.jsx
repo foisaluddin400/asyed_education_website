@@ -45,7 +45,7 @@ export default function Footer() {
               <h1 className=" link-hover">Contact Us</h1>
             </Link>
             <Link href="/privacy">
-              <h1 className=" link-hover">privacy & Policy</h1>
+              <h1 className=" link-hover">Privacy & Policy</h1>
             </Link>
             <Link href="/terms">
               <h1 className=" link-hover">Terms & Condition</h1>

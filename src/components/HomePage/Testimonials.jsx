@@ -235,7 +235,11 @@ const Testimonials = () => {
                         <div className="flex items-center gap-4 mt-5">
                           <div className="relative w-[60px] h-[60px]">
                             <Image
-                              src={`${fileBaseurl}/${item?.authorImage}`}
+                              src={
+                                item?.authorImage?.startsWith("http")
+                                  ? item?.authorImage
+                                  : `${fileBaseurl}/${item?.authorImage}`
+                              }
                               alt={item?.authorName}
                               fill
                               className="rounded-full object-cover"

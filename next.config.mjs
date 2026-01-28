@@ -13,6 +13,16 @@ const nextConfig = {
         hostname: "i.ibb.co",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "theseedsoflearning.s3.us-east-2.amazonaws.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "api.theseedsoflearning.com",
+        pathname: "/**",
+      },
     ],
   },
 };

@@ -26,7 +26,7 @@ const BlogDetails = () => {
     return (
         <div>
             {/* Hero Section */}
-            <div className="relative w-full h-[400px] md:h-[500px] overflow-hidden">
+            {/* <div className="relative w-full h-[400px] md:h-[500px] overflow-hidden">
                 <Image
                     src={hero}
                     alt="Hero Banner"
@@ -49,17 +49,17 @@ const BlogDetails = () => {
                         </h1>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             {/* Content Section */}
             <section className="py-16 md:px-4 px-3 container mx-auto">
                 <div className="bg-white rounded-xl overflow-hidden">
                     {/* Blog Featured Image */}
                     {singleBlogDetails?.image && (
-                        <div className="relative w-full h-[300px] md:h-[500px] mb-8 rounded-xl overflow-hidden shadow-sm">
+                        <div className="relative w-full h-[300px] md:h-[80vh] mb-8 rounded-xl overflow-hidden shadow-sm">
                             <Image
-                                src={`${fileBaseurl}/${singleBlogDetails.image.replace(/\\/g, "/")}`}
-                                alt={singleBlogDetails.title}
+                                src={singleBlogDetails?.image.replace(/\\/g, "/")}
+                                alt="Blog image"
                                 fill
                                 className="object-cover"
                             />

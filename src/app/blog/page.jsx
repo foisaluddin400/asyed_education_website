@@ -117,7 +117,7 @@ export default function BlogPage() {
                 <div className="w-full h-56 relative">
 
                   <Image
-                    src={`${baseUrl}/${img?.image.replace(/\\/g, "/")}`}
+                    src={img?.image.replace(/\\/g, "/")}
                     alt="Blog image"
                     fill
                     className="object-cover"
