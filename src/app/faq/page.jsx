@@ -3,6 +3,7 @@
 import React from "react";
 import { Collapse, ConfigProvider } from "antd";
 import { FaMinusCircle, FaPlusCircle } from "react-icons/fa";
+import { RiQuestionAnswerLine } from "react-icons/ri";
 import mainContactRightImage from "../../../public/img/privecy.png";
 import Image from "next/image";
 import { useGetAllFaqQuery } from "@/redux/Api/legalApi";
@@ -53,37 +54,49 @@ const Faq = () => {
         </div>
       </div>
       <div className=" ">
-        <ConfigProvider
-          theme={{
-            components: {
-              Collapse: {
-                headerPadding: "20px 24px",
-                contentPadding: "0 24px 24px",
-                borderRadiusLG: 16,
-                fontSize: 16,
-                fontSizeLG: 18,
+        {!isLoading && items.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-10 text-center bg-gray-50 rounded-2xl border border-gray-100 p-8">
+            <div className="bg-white p-4 rounded-full mb-4 shadow-sm">
+              <RiQuestionAnswerLine className="text-5xl text-gray-400" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-800 mb-2">No FAQs Available</h3>
+            <p className="text-gray-500 max-w-sm">
+              We are currently updating our Frequently Asked Questions. Please check back later or contact us directly.
+            </p>
+          </div>
+        ) : (
+          <ConfigProvider
+            theme={{
+              components: {
+                Collapse: {
+                  headerPadding: "20px 24px",
+                  contentPadding: "0 24px 24px",
+                  borderRadiusLG: 16,
+                  fontSize: 16,
+                  fontSizeLG: 18,
+                },
               },
-            },
-            token: {
-              colorPrimary: "#22C55E",
-              colorBorder: "#e5e7eb",
-            },
-          }}
-        >
-          <Collapse
-            items={items}
-            defaultActiveKey={["1"]}
-            expandIconPosition="right"
-            expandIcon={({ isActive }) =>
-              isActive ? (
-                <FaMinusCircle className="text-[#22C55E] text-2xl" />
-              ) : (
-                <FaPlusCircle className="text-gray-600 text-2xl" />
-              )
-            }
-            className="bg-white shadow-lg rounded-2xl overflow-hidden border border-gray-200"
-          />
-        </ConfigProvider>
+              token: {
+                colorPrimary: "#22C55E",
+                colorBorder: "#e5e7eb",
+              },
+            }}
+          >
+            <Collapse
+              items={items}
+              defaultActiveKey={["1"]}
+              expandIconPosition="right"
+              expandIcon={({ isActive }) =>
+                isActive ? (
+                  <FaMinusCircle className="text-[#22C55E] text-2xl" />
+                ) : (
+                  <FaPlusCircle className="text-gray-600 text-2xl" />
+                )
+              }
+              className="bg-white shadow-lg rounded-2xl overflow-hidden border border-gray-200"
+            />
+          </ConfigProvider>
+        )}
       </div>
     </div>
   );

@@ -3,8 +3,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 // const baseUrl = "https://api.kidsknowrights.com";  
-export const baseUrl = "http://10.10.20.22:4000/api/v1";
-export const fileBaseurl = "http://10.10.20.22:4000"
+export const baseUrl = "https://api.theseedsoflearning.com/api/v1";
+export const fileBaseurl = "https://api.theseedsoflearning.com"
 // Helper function to get the token
 const getToken = () => {
   if (typeof window === "undefined") {

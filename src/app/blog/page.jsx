@@ -7,12 +7,12 @@ import blog1 from "../../../public/img/service1.jpg";
 import blog2 from "../../../public/img/service2.jpg";
 import blog3 from "../../../public/img/service3.jpg";
 import blog4 from "../../../public/img/service4.jpg";
-import { RiArrowRightWideLine } from "react-icons/ri";
+import { RiArrowRightWideLine, RiArticleLine } from "react-icons/ri";
 import { useGetAllBlogsQuery } from "@/redux/Api/blogApi";
 import { baseUrl } from "@/redux/Api/baseApi";
 import Link from "next/link";
 
-const blogs = [blog1, blog2, blog3, blog4, blog1, blog2];
+// const blogs = [blog1, blog2, blog3, blog4, blog1, blog2];
 
 export default function BlogPage() {
 
@@ -92,41 +92,56 @@ export default function BlogPage() {
           </p>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {blogs.map((img, index) => (
-            <div
-              key={index}
-              className="rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition p-0 overflow-hidden bg-white"
-            >
-              {/* Image */}
-              <div className="w-full h-56 relative">
-
-                <Image
-                  src={`${baseUrl}/${img?.image.replace(/\\/g, "/")}`}
-                  alt="Blog image"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-
-              {/* Content */}
-              <div className="p-6 space-y-3 flex flex-col items-start">
-                <h3 className="text-lg font-semibold text-gray-800">
-                  {img?.title}
-                </h3>
-                <p className="text-sm text-gray-600 leading-relaxed mb-4">
-                  {img?.content?.replace(/<\/?[^>]+(>|$)/g, "")}
-                </p>
-
-
-                <Link href={`/blog/${img?._id}`} className="mt-4 bg-primary text-white px-5 py-2 rounded-lg hover:bg-[#095d56] transition text-sm font-medium ">
-                  Learn more
-                </Link>
-              </div>
+        {/* Content */}
+        {!isLoading && blogs.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-20 text-center">
+            <div className="bg-gray-100 p-6 rounded-full mb-6">
+              <RiArticleLine className="text-6xl text-gray-400" />
             </div>
-          ))}
-        </div>
+            <h2 className="text-2xl font-bold text-gray-800 mb-2">No Blogs Published Yet</h2>
+            <p className="text-gray-500 max-w-md mb-8">
+              We haven't published any blog posts yet. Stay tuned for updates and educational articles coming soon!
+            </p>
+            <Link href="/" className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-[#095d56] transition font-medium">
+              Back to Home
+            </Link>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            {blogs.map((img, index) => (
+              <div
+                key={index}
+                className="rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition p-0 overflow-hidden bg-white"
+              >
+                {/* Image */}
+                <div className="w-full h-56 relative">
+
+                  <Image
+                    src={`${baseUrl}/${img?.image.replace(/\\/g, "/")}`}
+                    alt="Blog image"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+
+                {/* Content */}
+                <div className="p-6 space-y-3 flex flex-col items-start">
+                  <h3 className="text-lg font-semibold text-gray-800">
+                    {img?.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 leading-relaxed mb-4">
+                    {img?.content?.replace(/<\/?[^>]+(>|$)/g, "")}
+                  </p>
+
+
+                  <Link href={`/blog/${img?._id}`} className="mt-4 bg-primary text-white px-5 py-2 rounded-lg hover:bg-[#095d56] transition text-sm font-medium ">
+                    Learn more
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </section>
     </div>
   );

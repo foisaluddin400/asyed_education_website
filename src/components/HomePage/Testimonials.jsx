@@ -14,13 +14,14 @@ import "@splidejs/react-splide/css";
 import { MdStar } from "react-icons/md";
 import { HiArrowNarrowLeft, HiArrowNarrowRight } from "react-icons/hi";
 import { FaArrowRight } from "react-icons/fa";
+import { RiChatQuoteLine } from "react-icons/ri";
 import { useGetAllTestimonialsQuery } from "@/redux/Api/blogApi";
 import { baseUrl, fileBaseurl } from "@/redux/Api/baseApi";
 
 const Testimonials = () => {
-   const { data: response } = useGetAllTestimonialsQuery();
-   const testimonials = response?.data || [];
-   console.log("Testimonials Data:", testimonials);
+  const { data: response } = useGetAllTestimonialsQuery();
+  const testimonials = response?.data || [];
+  console.log("Testimonials Data:", testimonials);
   // const testimonials = [
   //   {
   //     name: "Ahmed K.",
@@ -187,59 +188,71 @@ const Testimonials = () => {
           </div>
           <div className="mt-8 md:mt-0">
             <div className="w-full">
-              <Splide
-                ref={splideRef}
-                options={{
-                  type: "loop",
-                  perPage: 2,
-                  gap: "1rem",
-                  arrows: false,
-                  pagination: false,
-                  breakpoints: {
-                    1724: { perPage: 3 },
-                    968: { perPage: 2 },
-                    640: { perPage: 1 },
-                  },
-                }}
-                aria-label="Testimonials"
-                className="w-full"
-              >
-                {testimonials?.map((item, index) => (
-                  <SplideSlide key={index}>
-                    <div className="shadow-lg bg-[#FFFFFF] rounded-2xl p-4 py-8 h-full flex flex-col justify-between">
-                      <div>
-                        <div className="flex pb-3 text-yellow-500">
-                          <MdStar />
-                          <MdStar />
-                          <MdStar />
-                          <MdStar />
-                          <MdStar />
-                          <p className="-mt-1 pl-2 text-gray-600">(5.0)</p>
-                        </div>
-                        <p className="text-sm mt-1 text-gray-700 italic">
-                          {item?.quote}
-                        </p>
-                      </div>
-                      <div className="flex items-center gap-4 mt-5">
-                        <div className="relative w-[60px] h-[60px]">
-                          <Image
-                            src={`${fileBaseurl}/${item?.authorImage}`}
-                            alt={item?.authorName}
-                            fill
-                            className="rounded-full object-cover"
-                          />
-                        </div>
+              {testimonials.length === 0 ? (
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 p-8 text-center flex flex-col items-center justify-center min-h-[300px]">
+                  <div className="bg-white/20 p-4 rounded-full mb-4">
+                    <RiChatQuoteLine className="text-5xl text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-2">No Stories Yet</h3>
+                  <p className="text-gray-200 max-w-sm">
+                    Be the first to share your experience with us! We'd love to hear from you.
+                  </p>
+                </div>
+              ) : (
+                <Splide
+                  ref={splideRef}
+                  options={{
+                    type: "loop",
+                    perPage: 2,
+                    gap: "1rem",
+                    arrows: false,
+                    pagination: false,
+                    breakpoints: {
+                      1724: { perPage: 3 },
+                      968: { perPage: 2 },
+                      640: { perPage: 1 },
+                    },
+                  }}
+                  aria-label="Testimonials"
+                  className="w-full"
+                >
+                  {testimonials?.map((item, index) => (
+                    <SplideSlide key={index}>
+                      <div className="shadow-lg bg-[#FFFFFF] rounded-2xl p-4 py-8 h-full flex flex-col justify-between">
                         <div>
-                          <h5 className="font-semibold text-gray-900">
-                            {item?.authorName}
-                          </h5>
-                          <p className="text-sm text-gray-500">{item?.authorTitle}</p>
+                          <div className="flex pb-3 text-yellow-500">
+                            <MdStar />
+                            <MdStar />
+                            <MdStar />
+                            <MdStar />
+                            <MdStar />
+                            <p className="-mt-1 pl-2 text-gray-600">(5.0)</p>
+                          </div>
+                          <p className="text-sm mt-1 text-gray-700 italic">
+                            {item?.quote}
+                          </p>
+                        </div>
+                        <div className="flex items-center gap-4 mt-5">
+                          <div className="relative w-[60px] h-[60px]">
+                            <Image
+                              src={`${fileBaseurl}/${item?.authorImage}`}
+                              alt={item?.authorName}
+                              fill
+                              className="rounded-full object-cover"
+                            />
+                          </div>
+                          <div>
+                            <h5 className="font-semibold text-gray-900">
+                              {item?.authorName}
+                            </h5>
+                            <p className="text-sm text-gray-500">{item?.authorTitle}</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </SplideSlide>
-                ))}
-              </Splide>
+                    </SplideSlide>
+                  ))}
+                </Splide>
+              )}
             </div>
 
             {/* Custom Arrows */}

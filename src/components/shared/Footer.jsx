@@ -6,12 +6,12 @@ import { FiPhone } from "react-icons/fi";
 import { useGetContactQuery } from "@/redux/Api/blogApi";
 export default function Footer() {
 
-   const { data: contactData } = useGetContactQuery();
-  
-    const contactInfo = contactData?.data || {};
-    const email = contactInfo.email
-    const phone = contactInfo.phone
-    console.log("Email:", email, phone);
+  const { data: contactData } = useGetContactQuery();
+
+  const contactInfo = contactData?.data || {};
+  const email = contactInfo.email
+  const phone = contactInfo.phone
+  console.log("Email:", email, phone);
 
   return (
     <div className="">
@@ -41,8 +41,8 @@ export default function Footer() {
             <Link href="about_us">
               <h1 className=" link-hover">About Us</h1>
             </Link>
-            <Link href="/contact">
-              <h1 className=" link-hover">Contuct Us</h1>
+            <Link href="/contactUs">
+              <h1 className=" link-hover">Contact Us</h1>
             </Link>
             <Link href="/privacy">
               <h1 className=" link-hover">privacy & Policy</h1>
@@ -61,7 +61,7 @@ export default function Footer() {
               Email:{" "}
               <div>
                 <span>{email}</span>
-                
+
               </div>
             </a>
             <a className=" link-hover flex gap-2  font-medium">
@@ -69,7 +69,7 @@ export default function Footer() {
               Phone:{" "}
               <div>
                 <span>{phone}</span>
-                
+
               </div>
             </a>
           </nav>
