@@ -1,13 +1,9 @@
 "use client";
 
 import React, { useRef } from "react";
-import leftImage from "../../../public/img/leftImage.png";
-import icon from "../../../public/img/ic.png";
-import icon1 from "../../../public/img/ic2.png";
+
 import Image from "next/image";
-import profile1 from "../../../public/img/mm.jpg";
-import profile2 from "../../../public/img/ss.jpg";
-import profile3 from "../../../public/img/vv.jpg";
+
 import background from "../../../public/img/back.png";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
@@ -16,112 +12,13 @@ import { HiArrowNarrowLeft, HiArrowNarrowRight } from "react-icons/hi";
 import { FaArrowRight } from "react-icons/fa";
 import { RiChatQuoteLine } from "react-icons/ri";
 import { useGetAllTestimonialsQuery } from "@/redux/Api/blogApi";
-import { baseUrl, fileBaseurl } from "@/redux/Api/baseApi";
+import { fileBaseurl } from "@/redux/Api/baseApi";
 
 const Testimonials = () => {
   const { data: response } = useGetAllTestimonialsQuery();
-  const testimonials = response?.data || [];
+  const testimonials = response?.data?.items || (Array.isArray(response?.data) ? response.data : []);
   console.log("Testimonials Data:", testimonials);
-  // const testimonials = [
-  //   {
-  //     name: "Ahmed K.",
-  //     role: "Café Owner",
-  //     img: profile1,
-  //     review:
-  //       "ProfitableBusinessesForSale.com made selling my café so much easier. Within weeks of listing, I started getting genuine inquiries. Highly recommended!",
-  //   },
-  //   {
-  //     name: "Sophie L.",
-  //     role: "Small Business Owner",
-  //     img: profile1,
-  //     review:
-  //       "I was worried about finding buyers, but PBFS gave my business the right exposure. Their Premium Seller package was worth every penny.",
-  //   },
-  //   {
-  //     name: "Raj P.",
-  //     role: "Entrepreneur",
-  //     img: profile1,
-  //     review:
-  //       "The valuation service helped me price my business correctly. I closed a deal in 4 months—faster than expected!",
-  //   },
-  //   {
-  //     name: "Maria G.",
-  //     role: "Franchise Owner",
-  //     img: profile1,
-  //     review:
-  //       "Listing our franchise on PBFS gave us international visibility. We received inquiries from investors in three different countries!",
-  //   },
-  //   {
-  //     name: "John S.",
-  //     role: "Franchise Seller",
-  //     img: profile1,
-  //     review:
-  //       "The franchise package was simple to use and provided real exposure. The dashboard makes tracking leads so easy.",
-  //   },
-  //   {
-  //     name: "Fatima A.",
-  //     role: "Franchisor",
-  //     img: profile1,
-  //     review:
-  //       "Great platform for franchisors! The social media spotlight and priority placement really boosted our brand visibility.",
-  //   },
-  //   {
-  //     name: "Omar R.",
-  //     role: "Salon Owner",
-  //     img: profile1,
-  //     review:
-  //       "I listed my salon equipment here and got it sold in less than two weeks. The inquiry alerts kept me updated instantly.",
-  //   },
-  //   {
-  //     name: "Elena M.",
-  //     role: "Asset Seller",
-  //     img: profile1,
-  //     review:
-  //       "Excellent platform for selling business assets. Easy to list, professional visibility, and I could manage everything from one dashboard.",
-  //   },
-  //   {
-  //     name: "Carlos D.",
-  //     role: "Business Broker",
-  //     img: profile1,
-  //     review:
-  //       "As a broker, I needed a place to list multiple businesses. PBFS is the perfect platform with strong lead tracking and premium visibility options.",
-  //   },
-  //   {
-  //     name: "Noor S.",
-  //     role: "Broker",
-  //     img: profile1,
-  //     review:
-  //       "The broker package gives me everything I need—multiple listings, team access, and high-quality buyer inquiries.",
-  //   },
-  //   {
-  //     name: "David B.",
-  //     role: "Startup Founder",
-  //     img: profile1,
-  //     review:
-  //       "I uploaded my startup idea for free and quickly connected with investors. This platform is perfect for early-stage entrepreneurs.",
-  //   },
-  //   {
-  //     name: "Aisha M.",
-  //     role: "Innovator",
-  //     img: profile1,
-  //     review:
-  //       "The Business Idea Lister gave me credibility and visibility with serious investors. Great way to showcase innovation for free.",
-  //   },
-  //   {
-  //     name: "Michael T.",
-  //     role: "Investor",
-  //     img: profile1,
-  //     review:
-  //       "The investor subscription is worth it. I discovered fresh ideas and had early access to listings before anyone else.",
-  //   },
-  //   {
-  //     name: "Test User",
-  //     role: "Entrepreneur",
-  //     img: profile1,
-  //     review:
-  //       "Whether you&apos;re buying or selling, our platform makes the process seamless and straightforward. Here&apos;s how it works according to our satisfied users.",
-  //   },
-  // ];
+
 
   const splideRef = useRef(null);
 
@@ -236,9 +133,9 @@ const Testimonials = () => {
                           <div className="relative w-[60px] h-[60px]">
                             <Image
                               src={
-                                item?.authorImage?.startsWith("http")
-                                  ? item?.authorImage
-                                  : `${fileBaseurl}/${item?.authorImage}`
+                                item?.authorAvatar?.startsWith("http")
+                                  ? item?.authorAvatar
+                                  : `${fileBaseurl}/${item?.authorAvatar}`
                               }
                               alt={item?.authorName}
                               fill

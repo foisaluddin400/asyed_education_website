@@ -3,28 +3,6 @@ import { baseUrl } from "@/redux/Api/baseApi";
 import { useGetAllVideosQuery } from "@/redux/Api/videoApi";
 import React from "react";
 
-const videos = [
-  {
-    title: "Welcome To Seeds Of Learning",
-    desc: "Our mission is to provide personalized tutoring, meaningful mentorship, and a positive learning environment where students can discover their strengths and achieve academic success.",
-    url: "https://www.youtube.com/embed/ysz5S6PUM-U", // sample video
-  },
-  {
-    title: "Welcome To Seeds Of Learning",
-    desc: "Our mission is to provide personalized tutoring, meaningful mentorship, and a positive learning environment where students can discover their strengths and achieve academic success.",
-    url: "https://www.youtube.com/embed/ScMzIvxBSi4", // sample video
-  },
-  {
-    title: "Welcome To Seeds Of Learning",
-    desc: "Our mission is to provide personalized tutoring, meaningful mentorship, and a positive learning environment where students can discover their strengths and achieve academic success.",
-    url: "https://www.youtube.com/embed/qP7XrTddI0E", // sample video
-  },
-  {
-    title: "Welcome To Seeds Of Learning",
-    desc: "Our mission is to provide personalized tutoring, meaningful mentorship, and a positive learning environment where students can discover their strengths and achieve academic success.",
-    url: "https://www.youtube.com/embed/jNQXAC9IVRw", // sample video
-  },
-];
 
 const VideoSection = () => {
        const { data: videosData, isLoading } = useGetAllVideosQuery();
@@ -59,7 +37,7 @@ const VideoSection = () => {
         <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
           <video
             className="w-full h-[260px] rounded-xl object-cover"
-            src={`${baseUrl}/${v?.videoUrl}`}
+            src={v?.videoUrl}
             controls
             muted
             // autoPlay

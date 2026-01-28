@@ -19,7 +19,7 @@ export default function Footer() {
         className="bg-black text-white;
 "
       >
-        <footer className="md:grid md:grid-cols-3 gap-6 text-white p-10">
+        <footer className="md:grid md:grid-cols-3 gap-6 text-white p-2 md:p-10">
           <aside>
             <Image
               src="/img/image.png"
