@@ -3,16 +3,9 @@
 import React from "react";
 import Image from "next/image";
 import hero from "../../../public/img/bannar1.jpg";
-import blog1 from "../../../public/img/service1.jpg";
-import blog2 from "../../../public/img/service2.jpg";
-import blog3 from "../../../public/img/service3.jpg";
-import blog4 from "../../../public/img/service4.jpg";
 import { RiArrowRightWideLine, RiArticleLine } from "react-icons/ri";
 import { useGetAllBlogsQuery } from "@/redux/Api/blogApi";
-import { baseUrl } from "@/redux/Api/baseApi";
 import Link from "next/link";
-
-// const blogs = [blog1, blog2, blog3, blog4, blog1, blog2];
 
 export default function BlogPage() {
 

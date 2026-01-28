@@ -3,9 +3,7 @@ import { useGetSingleBlogQuery } from "@/redux/Api/blogApi";
 import { useParams } from "next/navigation";
 import React from "react";
 import Image from "next/image";
-import hero from "../../../../public/img/bannar1.jpg";
-import { baseUrl, fileBaseurl } from "@/redux/Api/baseApi";
-import { RiArrowRightWideLine, RiCalendarLine, RiUserLine } from "react-icons/ri";
+import { RiArrowRightWideLine, RiCalendarLine } from "react-icons/ri";
 import Link from "next/link";
 
 const BlogDetails = () => {
@@ -14,7 +12,7 @@ const BlogDetails = () => {
 
     const { data: blog, isLoading } = useGetSingleBlogQuery(id);
     const singleBlogDetails = blog?.data;
-    console.log("singleBlogDetails===>", fileBaseurl)
+
     if (isLoading) {
         return (
             <div className="flex justify-center items-center pin h-screen">
@@ -25,31 +23,7 @@ const BlogDetails = () => {
 
     return (
         <div>
-            {/* Hero Section */}
-            {/* <div className="relative w-full h-[400px] md:h-[500px] overflow-hidden">
-                <Image
-                    src={hero}
-                    alt="Hero Banner"
-                    fill
-                    priority
-                    className="object-cover object-center"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-primary to-[#000000b9] opacity-80"></div>
-                <div className="relative px-3 flex items-center h-full container m-auto text-white">
-                    <div className="max-w-4xl">
-                        <div className="flex items-center gap-2 text-sm md:text-base text-gray-300 mb-4">
-                            <Link href="/" className="hover:text-white transition">Home</Link>
-                            <RiArrowRightWideLine />
-                            <Link href="/blog" className="hover:text-white transition">Blogs</Link>
-                            <RiArrowRightWideLine />
-                            <span className="text-white truncate max-w-[200px] md:max-w-xs">{singleBlogDetails?.title}</span>
-                        </div>
-                        <h1 className="md:text-5xl text-3xl font-bold leading-tight mb-6">
-                            {singleBlogDetails?.title}
-                        </h1>
-                    </div>
-                </div>
-            </div> */}
+           
 
             {/* Content Section */}
             <section className="py-16 md:px-4 px-3 container mx-auto">
