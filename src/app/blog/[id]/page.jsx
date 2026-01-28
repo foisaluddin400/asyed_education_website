@@ -23,10 +23,10 @@ const BlogDetails = () => {
 
     return (
         <div>
-           
+
 
             {/* Content Section */}
-            <section className="py-16 md:px-4 px-3 container mx-auto">
+            <section className="py-3 md:py-6 px-3 container mx-auto">
                 <div className="bg-white rounded-xl overflow-hidden">
                     {/* Blog Featured Image */}
                     {singleBlogDetails?.image && (
@@ -34,7 +34,7 @@ const BlogDetails = () => {
                             <Image
                                 src={singleBlogDetails?.image.replace(/\\/g, "/")}
                                 alt="Blog image"
-                                fill
+                               fill
                                 className="object-cover"
                             />
                         </div>
