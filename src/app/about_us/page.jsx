@@ -9,7 +9,7 @@ import about3 from "../../../public/img/about3.jpg";
 import icon1 from "../../../public/img/icon1.png";
 import icon2 from "../../../public/img/icon2.png";
 import icon3 from "../../../public/img/icon4.png";
-import { RiArrowRightWideLine } from "react-icons/ri";
+import { RiArrowRightWideLine, RiInformationLine } from "react-icons/ri";
 import { useGetAboutUsQuery } from "@/redux/Api/aboutUsApi";
 
 const AboutUs = () => {
@@ -38,7 +38,7 @@ const AboutUs = () => {
           <div>
             <h1 className=" leading-tight">
               <span className="md:text-5xl text-3xl">About Us</span> <br />
-              <p className="py-3 max-w-2xl text-gray-400">
+              <p className="py-3 max-w-2xl text-white">
                 With a team of experienced tutors, flexible learning options,
                 and data-driven progress tracking, we ensure that education is
                 not just about grades — it’s about growth, confidence, and
@@ -94,11 +94,23 @@ const AboutUs = () => {
             </div>
           </div>
           <div className="pt-6 lg:pt-0">
-         <p
-          className="text-gray-700"
-          dangerouslySetInnerHTML={{ __html: sanitizedContent }}
-        />
-    </div>
+            {!data?.data?.content ? (
+              <div className="flex flex-col items-center justify-center h-full py-10 text-center">
+                <div className="bg-gray-100 p-4 rounded-full mb-4">
+                  <RiInformationLine className="text-4xl text-gray-400" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-2">Content Coming Soon</h3>
+                <p className="text-gray-500 text-sm">
+                  We are crafting our story. Please check back later for more details about us.
+                </p>
+              </div>
+            ) : (
+              <p
+                className="text-gray-700"
+                dangerouslySetInnerHTML={{ __html: sanitizedContent }}
+              />
+            )}
+          </div>
         </div>
       </div>
 
@@ -113,13 +125,13 @@ const AboutUs = () => {
           <div>
             <h1 className="text-xl font-semibold">Our Purpose</h1>
             <p className="text-gray-400">
-          At Seeds of Learning, our purpose is to nurture every learner’s potential through personalized education, guidance, and mentorship. We believe that every child deserves the right tools and environment to grow academically and personally. 
+              At Seeds of Learning, our purpose is to nurture every learner’s potential through personalized education, guidance, and mentorship. We believe that every child deserves the right tools and environment to grow academically and personally.
             </p>
           </div>
         </div>
 
         {/* Feature 2 */}
-         <div className="text-center border p-6 rounded-lg  hover:shadow-xl transition-shadow duration-300">
+        <div className="text-center border p-6 rounded-lg  hover:shadow-xl transition-shadow duration-300">
           <div className="flex items-center justify-center">
             <div className="bg-[#f1ede2] mb-4 p-4 rounded-full">
               <Image src={icon2} alt="icon1" width={40} height={40} />

@@ -6,11 +6,21 @@ const nextConfig = {
         protocol: "http",
         hostname: "10.10.20.60",
         port: "3000",
-        pathname: "/api/v1/public/**",
+        pathname: "/**",
       },
       {
         protocol: "https",
         hostname: "i.ibb.co",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "theseedsoflearning.s3.us-east-2.amazonaws.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "api.theseedsoflearning.com",
         pathname: "/**",
       },
     ],

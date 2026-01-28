@@ -3,7 +3,16 @@ import Link from "next/link";
 import { CiMail } from "react-icons/ci";
 import React from "react";
 import { FiPhone } from "react-icons/fi";
+import { useGetContactQuery } from "@/redux/Api/blogApi";
 export default function Footer() {
+
+  const { data: contactData } = useGetContactQuery();
+
+  const contactInfo = contactData?.data || {};
+  const email = contactInfo.email
+  const phone = contactInfo.phone
+  console.log("Email:", email, phone);
+
   return (
     <div className="">
       <div
@@ -13,8 +22,8 @@ export default function Footer() {
         <footer className="md:grid md:grid-cols-3 gap-6 text-white p-10">
           <aside>
             <Image
-              src="/img/logo4.png"
-              className="w-[150px] mb-5"
+              src="/img/image.png"
+              className="w-[250px] object-cover mb-5"
               width={100}
               height={50}
               alt="logo"
@@ -29,14 +38,14 @@ export default function Footer() {
 
           <nav className="flex flex-col space-y-5 text-neutral-300 py-11 md:py-0">
             <h6 className="text-2xl text-white">Information</h6>
-            <Link href="/about">
+            <Link href="about_us">
               <h1 className=" link-hover">About Us</h1>
             </Link>
-            <Link href="/contact">
-              <h1 className=" link-hover">Contuct Us</h1>
+            <Link href="/contactUs">
+              <h1 className=" link-hover">Contact Us</h1>
             </Link>
             <Link href="/privacy">
-              <h1 className=" link-hover">privacy & Policy</h1>
+              <h1 className=" link-hover">Privacy & Policy</h1>
             </Link>
             <Link href="/terms">
               <h1 className=" link-hover">Terms & Condition</h1>
@@ -47,22 +56,20 @@ export default function Footer() {
           </nav>
           <nav className="space-y-5 text-neutral-300">
             <h6 className="text-2xl text-white">Help & Support</h6>
-            <a className=" link-hover flex gap-2  text-xl font-medium">
-              <CiMail className="text-3xl" />
+            <a className=" link-hover flex gap-2  font-medium">
+              <CiMail className="text-2xl" />
               Email:{" "}
               <div>
-                <span>your@gmail.com</span>
-                <br />
-                <span>your@gmailcom</span>
+                <span>{email}</span>
+
               </div>
             </a>
-            <a className=" link-hover flex gap-2 text-xl font-medium">
-              <FiPhone className="text-3xl" />
+            <a className=" link-hover flex gap-2  font-medium">
+              <FiPhone className="text-2xl" />
               Phone:{" "}
               <div>
-                <span>+8823432432432</span>
-                <br />
-                <span>+8823423454354</span>
+                <span>{phone}</span>
+
               </div>
             </a>
           </nav>

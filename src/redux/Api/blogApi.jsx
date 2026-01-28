@@ -12,10 +12,40 @@ const blogApi = baseApi.injectEndpoints({
       },
       providesTags: ['Blogs'],
     }),
-  
+    getAllTestimonials: builder.query({
+      query: () => {
+        return {
+          url: `/testimonials`,
+          method: "GET",
+        };
+      },
+      providesTags: ['Blogs'],
+    }),
+    getSingleBlog: builder.query({
+      query: (id) => {
+        return {
+          url: `/blog/${id}`,
+          method: "GET",
+        };
+      },
+      providesTags: ['Blogs'],
+    }),
+    
+  getContact: builder.query({
+      query: () => {
+        return {
+          url: `/contact/business-info`,
+          method: "GET",
+        };
+      },
+      providesTags: ["Blogs"],
+    }),
   }),
 });
 
 export const { 
-  useGetAllBlogsQuery
+  useGetAllBlogsQuery,
+  useGetSingleBlogQuery,
+  useGetContactQuery,
+  useGetAllTestimonialsQuery
 } = blogApi;

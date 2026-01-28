@@ -3,28 +3,22 @@
 import React from "react";
 import Image from "next/image";
 import hero from "../../../public/img/bannar1.jpg";
-import blog1 from "../../../public/img/service1.jpg";
-import blog2 from "../../../public/img/service2.jpg";
-import blog3 from "../../../public/img/service3.jpg";
-import blog4 from "../../../public/img/service4.jpg";
-import { RiArrowRightWideLine } from "react-icons/ri";
+import { RiArrowRightWideLine, RiArticleLine } from "react-icons/ri";
 import { useGetAllBlogsQuery } from "@/redux/Api/blogApi";
-import { baseUrl, fileBaseurl } from "@/redux/Api/baseApi";
-
-const blogs = [blog1, blog2, blog3, blog4, blog1, blog2];
+import Link from "next/link";
 
 export default function BlogPage() {
 
 
-     const {data:blogData, isLoading} = useGetAllBlogsQuery();
-     console.log("blogData===>",blogData?.data?.items)
-     const blogs = blogData?.data?.items || [];
+  const { data: blogData, isLoading } = useGetAllBlogsQuery();
+  console.log("blogData===>", blogData?.data?.items)
+  const blogs = blogData?.data?.items || [];
 
   return (
     <div>
       <div className="relative w-full h-[500px] md:h-[650px] overflow-hidden">
         {/* Background Image using Next/Image */}
-       
+
         <Image
           src={hero}
           alt="Hero Banner"
@@ -41,7 +35,7 @@ export default function BlogPage() {
           <div>
             <h1 className=" leading-tight">
               <span className="md:text-5xl text-3xl">Blogs</span> <br />
-              <p className="py-3 max-w-2xl text-gray-400">
+              <p className="py-3 max-w-2xl text-white">
                 With a team of experienced tutors, flexible learning options,
                 and data-driven progress tracking, we ensure that education is
                 not just about grades — it’s about growth, confidence, and
@@ -81,7 +75,7 @@ export default function BlogPage() {
           </div>
         </div>
       </div>
-      <section className="py-16 md:px-4 px-3 max-w-7xl mx-auto">
+      <section className="py-16 md:px-4 px-3 container mx-auto">
         {/* Heading */}
         <div className="text-center mb-14">
           <h1 className="md:text-4xl text-3xl font-bold text-gray-900">Blog</h1>
@@ -91,41 +85,56 @@ export default function BlogPage() {
           </p>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {blogs.map((img, index) => (
-            <div
-              key={index}
-              className="rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition p-0 overflow-hidden bg-white"
-            >
-              {/* Image */}
-              <div className="w-full h-56 relative">
-                  
-                <Image
-                  src={`${baseUrl}/${img?.image.replace(/\\/g, "/")}`}
-                  alt="Blog image"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-
-              {/* Content */}
-              <div className="p-6 space-y-3">
-                <h3 className="text-lg font-semibold text-gray-800">
-                  {img?.title}
-                </h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  {img?.content?.replace(/<\/?[^>]+(>|$)/g, "")}
-                </p>
-
-
-                <button className="mt-4 bg-primary text-white px-5 py-2 rounded-lg hover:bg-[#095d56] transition text-sm font-medium">
-                  Learn more
-                </button>
-              </div>
+        {/* Content */}
+        {!isLoading && blogs.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-20 text-center">
+            <div className="bg-gray-100 p-6 rounded-full mb-6">
+              <RiArticleLine className="text-6xl text-gray-400" />
             </div>
-          ))}
-        </div>
+            <h2 className="text-2xl font-bold text-gray-800 mb-2">No Blogs Published Yet</h2>
+            <p className="text-gray-500 max-w-md mb-8">
+              We haven't published any blog posts yet. Stay tuned for updates and educational articles coming soon!
+            </p>
+            <Link href="/" className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-[#095d56] transition font-medium">
+              Back to Home
+            </Link>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            {blogs.map((img, index) => (
+              <div
+                key={index}
+                className="rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition p-0 overflow-hidden bg-white"
+              >
+                {/* Image */}
+                <div className="w-full h-56 relative">
+
+                  <Image
+                    src={img?.image.replace(/\\/g, "/")}
+                    alt="Blog image"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+
+                {/* Content */}
+                <div className="p-6 space-y-3 flex flex-col items-start">
+                  <h3 className="text-lg font-semibold text-gray-800">
+                    {img?.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 leading-relaxed mb-4">
+                    {img?.content?.replace(/<\/?[^>]+(>|$)/g, "")}
+                  </p>
+
+
+                  <Link href={`/blog/${img?._id}`} className="mt-4 bg-primary text-white px-5 py-2 rounded-lg hover:bg-[#095d56] transition text-sm font-medium ">
+                    Learn more
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </section>
     </div>
   );

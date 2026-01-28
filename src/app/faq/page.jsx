@@ -3,100 +3,28 @@
 import React from "react";
 import { Collapse, ConfigProvider } from "antd";
 import { FaMinusCircle, FaPlusCircle } from "react-icons/fa";
+import { RiQuestionAnswerLine } from "react-icons/ri";
 import mainContactRightImage from "../../../public/img/privecy.png";
 import Image from "next/image";
+import { useGetAllFaqQuery } from "@/redux/Api/legalApi";
 const Faq = () => {
-  // Dummy FAQ Data
-  const items = [
-    {
-      key: "1",
-      label: (
-        <span className="font-semibold text-lg">
-          How do I choose the right tutor for my child?
-        </span>
-      ),
-      children: (
-        <p className="text-gray-600 leading-relaxed">
-          We match your child with a tutor based on their subject needs,
-          learning style, and personality. You’ll get tutor profiles to review,
-          and we offer a free consultation to ensure the perfect fit.
-        </p>
-      ),
-    },
-    {
-      key: "2",
-      label: (
-        <span className="font-semibold text-lg">
-          What subjects do you offer tutoring for?
-        </span>
-      ),
-      children: (
-        <p className="text-gray-600 leading-relaxed">
-          We offer tutoring in all major subjects including Math, Science,
-          English, Bangla, Physics, Chemistry, Biology, ICT, and exam
-          preparation (SSC, HSC, Admission Tests).
-        </p>
-      ),
-    },
-    {
-      key: "3",
-      label: (
-        <span className="font-semibold text-lg">
-          Are the classes conducted at home or online?
-        </span>
-      ),
-      children: (
-        <p className="text-gray-600 leading-relaxed">
-          We provide both! You can choose <strong>at-home tutoring</strong> or{" "}
-          <strong>online 1-on-1 classes</strong>
-          via Zoom/Google Meet — whichever is more convenient for you.
-        </p>
-      ),
-    },
-    {
-      key: "4",
-      label: (
-        <span className="font-semibold text-lg">
-          How much does tutoring cost?
-        </span>
-      ),
-      children: (
-        <p className="text-gray-600 leading-relaxed">
-          Pricing depends on the class level, subject, and tutor experience.
-          Fees start from ৳4,000–৳12,000 per month. We’ll give you exact pricing
-          during your free consultation.
-        </p>
-      ),
-    },
-    {
-      key: "5",
-      label: (
-        <span className="font-semibold text-lg">
-          Can I change the tutor if my child is not comfortable?
-        </span>
-      ),
-      children: (
-        <p className="text-gray-600 leading-relaxed">
-          Yes, absolutely! Your satisfaction is our priority. If the tutor isn’t
-          the right match, we’ll replace them at no extra cost.
-        </p>
-      ),
-    },
-    {
-      key: "6",
-      label: (
-        <span className="font-semibold text-lg">
-          Do you provide trial classes?
-        </span>
-      ),
-      children: (
-        <p className="text-gray-600 leading-relaxed">
-          Yes! We offer a <strong>free demo class</strong> so your child can
-          experience our teaching style before committing.
-        </p>
-      ),
-    },
-  ];
+  const { data: faqData, isLoading } = useGetAllFaqQuery();
+  const faqDataContent = faqData?.data;
+
+  const items = faqDataContent?.map((item) => ({
+    key: item?._id,
+    label: (
+      <span className="font-semibold text-lg">
+        {item?.question}
+      </span>
+    ),
+    children: (
+      <div className="text-gray-600 leading-relaxed">
+        {item?.answer}
+      </div>
+    ),
+  })) || [];
+
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-16 py-11">
@@ -126,37 +54,49 @@ const Faq = () => {
         </div>
       </div>
       <div className=" ">
-        <ConfigProvider
-          theme={{
-            components: {
-              Collapse: {
-                headerPadding: "20px 24px",
-                contentPadding: "0 24px 24px",
-                borderRadiusLG: 16,
-                fontSize: 16,
-                fontSizeLG: 18,
+        {!isLoading && items.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-10 text-center bg-gray-50 rounded-2xl border border-gray-100 p-8">
+            <div className="bg-white p-4 rounded-full mb-4 shadow-sm">
+              <RiQuestionAnswerLine className="text-5xl text-gray-400" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-800 mb-2">No FAQs Available</h3>
+            <p className="text-gray-500 max-w-sm">
+              We are currently updating our Frequently Asked Questions. Please check back later or contact us directly.
+            </p>
+          </div>
+        ) : (
+          <ConfigProvider
+            theme={{
+              components: {
+                Collapse: {
+                  headerPadding: "20px 24px",
+                  contentPadding: "0 24px 24px",
+                  borderRadiusLG: 16,
+                  fontSize: 16,
+                  fontSizeLG: 18,
+                },
               },
-            },
-            token: {
-              colorPrimary: "#22C55E",
-              colorBorder: "#e5e7eb",
-            },
-          }}
-        >
-          <Collapse
-            items={items}
-            defaultActiveKey={["1"]}
-            expandIconPosition="right"
-            expandIcon={({ isActive }) =>
-              isActive ? (
-                <FaMinusCircle className="text-[#22C55E] text-2xl" />
-              ) : (
-                <FaPlusCircle className="text-gray-600 text-2xl" />
-              )
-            }
-            className="bg-white shadow-lg rounded-2xl overflow-hidden border border-gray-200"
-          />
-        </ConfigProvider>
+              token: {
+                colorPrimary: "#22C55E",
+                colorBorder: "#e5e7eb",
+              },
+            }}
+          >
+            <Collapse
+              items={items}
+              defaultActiveKey={["1"]}
+              expandIconPosition="right"
+              expandIcon={({ isActive }) =>
+                isActive ? (
+                  <FaMinusCircle className="text-[#22C55E] text-2xl" />
+                ) : (
+                  <FaPlusCircle className="text-gray-600 text-2xl" />
+                )
+              }
+              className="bg-white shadow-lg rounded-2xl overflow-hidden border border-gray-200"
+            />
+          </ConfigProvider>
+        )}
       </div>
     </div>
   );
