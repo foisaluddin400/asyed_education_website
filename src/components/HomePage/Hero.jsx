@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image";
 import hero from "../../../public/img/bannar1.jpg";
 import icon1 from "../../../public/img/icon1.png";
@@ -5,8 +6,10 @@ import icon2 from "../../../public/img/icon2.png";
 import icon3 from "../../../public/img/icon4.png";
 import { FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Hero = () => {
+  const router = useRouter();
   return (
     <div>
       <div className="relative  w-full h-[500px] md:h-[650px] overflow-hidden">
@@ -37,7 +40,8 @@ const Hero = () => {
             </h1>
 
             <div className="mt-11 flex gap-2">
-              <Link href={'/'}><button
+          <button
+           onClick={() => router.push('/appartmentBooking')}
                 className="
               relative overflow-hidden 
               md:px-6 px-2 md:py-3 py-1 md:text-lg rounded-full 
@@ -60,7 +64,7 @@ const Hero = () => {
                 rounded-full
               "
                 ></span>
-              </button></Link>
+              </button>
               <button
                 className="
               relative overflow-hidden 

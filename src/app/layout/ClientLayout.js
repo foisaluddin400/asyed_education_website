@@ -16,12 +16,13 @@ export default function ClientLayout({ children }) {
     pathname === "/signIn/newpass" ||
     pathname === "/signUp/done" ||
     pathname === "/signUp/seller" ||
+    pathname === "/appartmentBooking" ||
       pathname === "/student-login" ||
     pathname === "/signUp/accountverify";
 
   return (
     <>
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col ">
         {!hideNavbarFooter && (
           <div>
             <Navbar />

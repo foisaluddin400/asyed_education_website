@@ -98,12 +98,7 @@ const [scriptLoaded, setScriptLoaded] = useState(false);
                
                   {" "}
              <button
-     onClick={() =>
-    window.open(
-      'https://app.tutorbird.com',
-      '_self'
-    )
-  }
+      onClick={() => router.push('/student-login')}
       className="
         relative overflow-hidden 
         px-6 py-3 text-lg rounded-full 

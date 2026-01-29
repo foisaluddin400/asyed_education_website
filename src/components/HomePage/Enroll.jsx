@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import backgroundImage from "../../../public/img/Vector.png";
 import leftDoll from "../../../public/img/left1.png";
@@ -5,8 +6,10 @@ import rightDoll from "../../../public/img/right1.png";
 
 import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 export default function Enroll() {
+  const router = useRouter();
   return (
     <div className="mt-20 ">
       <section
@@ -34,8 +37,9 @@ export default function Enroll() {
           <h1 className="md:text-7xl text-4xl font-bold leading-tight">
             How To Enroll Your Child <br /> To a Class
           </h1>
-          <div className="hidden justify-center mt-11">
+          <div className="flex justify-center mt-11">
             <button
+             onClick={() => router.push('/appartmentBooking')}
               className="
              relative overflow-hidden 
              px-6 py-3 text-lg rounded-full 
