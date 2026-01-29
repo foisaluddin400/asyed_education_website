@@ -16,12 +16,13 @@ export default function AppartmentBooking() {
     tryOpenLogin();
   }, []);
 
+ 
   return (
     <>
-      <div className="h-[20vh] flex flex-col justify-center items-center">
+      <div className="h-[10vh] flex flex-col justify-center items-center">
         <div>
           <Script
-            src="https://app.tutorbird.com/Widget/v4/Widget.ashx?settings=eyJTY2hvb2xJRCI6InNjaF9wTFpKUCIsIldlYnNpdGVJRCI6Indic181WnRKNyIsIldlYnNpdGVCbG9ja0lEIjoid2JiX21seEZKUyJ9"
+            src="https://app.tutorbird.com/Widget/v4/Widget.ashx?settings=eyJTY2hvb2xJRCI6InNjaF9wTFpKUCIsIldlYnNpdGVJRCI6Indic181WnRKNyIsIldlYnNpdGVCbG9ja0lEIjoid2JiX2Y1S3dKRiJ9"
             strategy="afterInteractive"
           />
         </div>
