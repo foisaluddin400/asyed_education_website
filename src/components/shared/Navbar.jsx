@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Search, ShoppingCart, User, ChevronDown, Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Drawer } from "antd";
+import { Drawer, Modal } from "antd";
 import Image from "next/image";
 import { FaArrowRight, FaTwitter, FaYoutube } from "react-icons/fa";
 import { SiFacebook } from "react-icons/si";
@@ -12,9 +12,16 @@ import { CiPhone } from "react-icons/ci";
 import { IoMailUnreadOutline } from "react-icons/io5";
 import { IoIosHome } from "react-icons/io";
 import { useGetContactQuery } from "@/redux/Api/blogApi";
+import { useRouter } from "next/navigation";
 
+import Script from 'next/script';
 export const Navbar = () => {
+  const router = useRouter();
+
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [loginOpen, setLoginOpen] = useState(false);
+const [scriptLoaded, setScriptLoaded] = useState(false);
+
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const pathname = usePathname();
   const { data: contactData } = useGetContactQuery();
@@ -39,9 +46,15 @@ export const Navbar = () => {
     { label: "Sign In", path: "/signIn" },
     { label: "Log Out", path: "/logout" },
   ];
+  const openLogin = () => {
+    if (typeof window !== 'undefined' && window.TutorBirdWidget) {
+      window.TutorBirdWidget.open('login');
+    }
+  };
 
   return (
     <header className="w-full">
+
       {/* Top Banner */}
       <div className="bg-secondary border-b border-gray-400 text-black py-2">
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-sm gap-4">
@@ -82,34 +95,36 @@ export const Navbar = () => {
                 </div>
               </div>
               <div>
-                <Link href={"/"}>
+               
                   {" "}
-                  <button
-                    className="
-                        relative overflow-hidden 
-                          px-6 py-3 text-lg rounded-full 
-                        flex items-center gap-3 
-                        bg-accent text-white
-                        transition-all duration-300
-                        group
-                         "
-                  >
-                    <span className="relative z-10">Login</span>
-                    <FaArrowRight className="relative z-10" />
+             <button
+      onClick={() => router.push('/student-login')}
+      className="
+        relative overflow-hidden 
+        px-6 py-3 text-lg rounded-full 
+        flex items-center gap-3 
+        bg-accent text-white
+        transition-all duration-300
+        group
+      "
+    >
+      <span className="relative z-10">Login</span>
+      <FaArrowRight className="relative z-10" />
 
-                    {/* Hover Green Animation Layer */}
-                    <span
-                      className="
-                          absolute inset-0 
-                          bg-primary  
-                          translate-x-[-102%] 
-                          group-hover:translate-x-0 
-                          transition-transform duration-500 
-                          rounded-full
-                        "
-                    ></span>
-                  </button>
-                </Link>
+      <span
+        className="
+          absolute inset-0 
+          bg-primary  
+          translate-x-[-102%] 
+          group-hover:translate-x-0 
+          transition-transform duration-500 
+          rounded-full
+        "
+      />
+    </button>
+
+
+            
               </div>
             </div>
           </div>
@@ -267,6 +282,27 @@ export const Navbar = () => {
           ))}
         </div>
       </Drawer>
+
+<Modal
+  open={loginOpen}
+  onCancel={() => setLoginOpen(false)}
+  footer={null}
+  width={420}
+  centered
+>
+  <h2 className="text-xl font-semibold mb-4 text-center">
+    Student Login
+  </h2>
+
+  {/* TutorBird Widget loads here */}
+  {scriptLoaded && (
+    <Script
+      src="https://app.tutorbird.com/Widget/v4/Widget.ashx?settings=eyJTY2hvb2xJRCI6InNjaF9wTFpKUCIsIldlYnNpdGVJRCI6Indic181WnRKNyIsIldlYnNpdGVCbG9ja0lEIjoid2JiX21jY1hKRyJ9"
+      strategy="afterInteractive"
+    />
+  )}
+</Modal>
+
     </header>
   );
 };

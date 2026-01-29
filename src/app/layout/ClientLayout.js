@@ -16,6 +16,7 @@ export default function ClientLayout({ children }) {
     pathname === "/signIn/newpass" ||
     pathname === "/signUp/done" ||
     pathname === "/signUp/seller" ||
+      pathname === "/student-login" ||
     pathname === "/signUp/accountverify";
 
   return (

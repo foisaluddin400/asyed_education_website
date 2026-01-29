@@ -1,9 +1,11 @@
+'use client';
 import Image from "next/image";
 import Link from "next/link";
 import { CiMail } from "react-icons/ci";
 import React from "react";
 import { FiPhone } from "react-icons/fi";
 import { useGetContactQuery } from "@/redux/Api/blogApi";
+
 export default function Footer() {
 
   const { data: contactData } = useGetContactQuery();
@@ -15,10 +17,12 @@ export default function Footer() {
 
   return (
     <div className="">
+
       <div
         className="bg-black text-white;
 "
       >
+      
         <footer className="md:grid md:grid-cols-3 gap-6 text-white p-2 md:p-10">
           <aside>
             <Image
