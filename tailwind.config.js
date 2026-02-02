@@ -16,14 +16,26 @@ module.exports = {
         neutral: "#3d4451",
         "base-100": "#ffffff",
       },
-       fontFamily: {
+      fontFamily: {
         clash: ["var(--clash-display)"],
         style: ["var(--style-display)"],
       },
+      keyframes: {
+        scroll: {
+          '0%': { transform: 'translateY(0)', opacity: '1' },
+          '100%': { transform: 'translateY(12px)', opacity: '0' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateX(-50%) translateY(0)' },
+          '50%': { transform: 'translateX(-50%) translateY(-10px)' },
+        }
+      },
+      animation: {
+        'spin-slow': 'spin 2.8s linear infinite',
+        'scroll': 'scroll 1.5s ease-in-out infinite',
+        'float': 'float 3s ease-in-out infinite',
+      },
     },
-    animation: {
-  'spin-slow': 'spin 2.8s linear infinite',
-},
   },
   plugins: [],
 };
