@@ -1,11 +1,11 @@
 {
-  "name": "bd-calling-interview-task",
+  "name": "education-website",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -H 10.10.20.48 -p 3000",
+    "dev": "next dev -p 3000",
     "build": "next build",
-    "start": "next start -H 10.10.20.48 -p 3000",
+    "start": "next start -p 3000",
     "lint": "next lint"
   },
   "dependencies": {
