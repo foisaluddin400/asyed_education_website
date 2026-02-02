@@ -14,31 +14,37 @@ import { IoIosHome } from "react-icons/io";
 import { useGetContactQuery } from "@/redux/Api/blogApi";
 import { useRouter } from "next/navigation";
 
-import Script from 'next/script';
+import Script from "next/script";
 export const Navbar = () => {
   const router = useRouter();
 
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
-const [scriptLoaded, setScriptLoaded] = useState(false);
+  const [scriptLoaded, setScriptLoaded] = useState(false);
 
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const pathname = usePathname();
   const { data: contactData } = useGetContactQuery();
 
   const contactInfo = contactData?.data || {};
-  const email = contactInfo.email
-  const phone = contactInfo.phone
-
+  const email = contactInfo.email;
+  const phone = contactInfo.phone;
 
   const navItems = [
     { label: "Home", path: "/" },
     { label: "About Us", path: "/about_us" },
-    { label: "Our Services", path: "/our_services" },
+    {
+      label: "Our Services",
+      path: "/our_services",
+      children: [
+        { label: "Group Tutoring", path: "/our_services/group-tutoring" },
+        { label: "1-on-1 Tutoring", path: "/our_services/one-on-one-tutoring" },
+        { label: "At Home Tutoring", path: "/our_services/at-home-tutoring" },
+      ],
+    },
     { label: "Blogs", path: "/blog" },
     { label: "Contact Us", path: "/contactUs" },
   ];
-
   const userMenuItems = [
     { label: "Profile", path: "/profilePage" },
     { label: "Dashboard", path: "/dashboard" },
@@ -47,29 +53,17 @@ const [scriptLoaded, setScriptLoaded] = useState(false);
     { label: "Log Out", path: "/logout" },
   ];
   const openLogin = () => {
-    if (typeof window !== 'undefined' && window.TutorBirdWidget) {
-      window.TutorBirdWidget.open('login');
+    if (typeof window !== "undefined" && window.TutorBirdWidget) {
+      window.TutorBirdWidget.open("login");
     }
   };
 
   return (
     <header className="w-full">
-
       {/* Top Banner */}
-      <div className="bg-secondary border-b border-gray-400 text-black py-2">
+      <div className="bg-primary border-b border-gray-400 text-white py-2">
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-sm gap-4">
-          <div className="">
-            <Link href="/" className="text-2xl font-bold">
-              <Image
-              className="w-[80px]"
-                alt="logo"
-                src="/img/logo4.png"
-                height={100}
-                width={400}
-                priority
-              />
-            </Link>
-          </div>
+          <div></div>
           <div className="hidden md:block">
             <div className="flex gap-6 lg:gap-11 flex-wrap justify-center">
               <div className="flex items-center gap-3">
@@ -78,9 +72,7 @@ const [scriptLoaded, setScriptLoaded] = useState(false);
                 </div>
                 <div>
                   <h1 className="text-sm lg:text-sm">Email Us Anytime</h1>
-                  <h1 className="font-semibold text-sm lg:text-sm">
-                    {email}
-                  </h1>
+                  <h1 className="font-semibold text-sm lg:text-sm">{email}</h1>
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -89,41 +81,10 @@ const [scriptLoaded, setScriptLoaded] = useState(false);
                 </div>
                 <div>
                   <h1 className="text-sm">Call Us Anytime</h1>
-                  <h1 className="font-semibold text-sm">
-                    {phone}
-                  </h1>
+                  <h1 className="font-semibold text-sm">{phone}</h1>
                 </div>
               </div>
               <div>
-               
-                  {" "}
-             <button
-      onClick={() => router.push('/student-login')}
-      className="
-        relative overflow-hidden 
-        px-6 py-3 text-lg rounded-full 
-        flex items-center gap-3 
-        bg-accent text-white
-        transition-all duration-300
-        group
-      "
-    >
-      <span className="relative z-10">Login</span>
-      <FaArrowRight className="relative z-10" />
-
-      <span
-        className="
-          absolute inset-0 
-          bg-primary  
-          translate-x-[-102%] 
-          group-hover:translate-x-0 
-          transition-transform duration-500 
-          rounded-full
-        "
-      />
-    </button>
-
-
             
               </div>
             </div>
@@ -131,66 +92,121 @@ const [scriptLoaded, setScriptLoaded] = useState(false);
         </div>
       </div>
 
-      {/* Main Header */}
-      <div className="relative bg-primary">
-        {/* Background Layer (Overlay) */}
-        <div className="absolute inset-0 flex pointer-events-none">
-          <div className="w-[60%]"></div>
-          <div className="w-[40%] bg-[#09814f] clip-diagonal"></div>
-        </div>
-
-        {/* NAVBAR CONTENT */}
-        <div className="relative z-10 text-white">
+      <div className=" ">
+        <div className="  text-black">
           <div className="container mx-auto px-4">
-            <nav className="flex items-center justify-between py-3">
-              {/* Left Side - Desktop: Home icon + Menu, Mobile: Home icon only */}
+            <nav className="flex items-center  py-3">
               <div className="flex w-full items-center space-x-4 lg:space-x-8">
-                <Link
-                  href="/"
-                  className="bg-[#077252] p-2 rounded-full text-2xl lg:text-3xl"
-                >
-                  <IoIosHome />
-                </Link>
+                <div className="">
+                  <Link href="/" className="text-2xl font-bold">
+                    <Image
+                      className="w-[80px]"
+                      alt="logo"
+                      src="/img/logo4.png"
+                      height={100}
+                      width={400}
+                      priority
+                    />
+                  </Link>
+                </div>
 
                 {/* Desktop Menu Items */}
-                <div className="hidden lg:flex justify-end w-full  items-center space-x-8">
+                <div className="hidden lg:flex w-full items-center space-x-8">
                   {navItems.map((item, idx) => (
-                    <Link
-                      key={idx}
-                      href={item.path}
-                      className={`px-2 py-1  transition-colors ${
-                        pathname === item.path
-                          ? "border-b text-accent border-accent font-medium"
-                          : "text-white hover:text-gray-200"
-                      }`}
-                    >
-                      {item.label}
-                    </Link>
+                    <div key={idx} className="relative group">
+                      <Link
+                        href={item.path || "#"}
+                        className={`px-2 py-1 transition-colors ${
+                          pathname === item.path
+                            ? "border-b text-accent border-accent font-medium"
+                            : "text-black hover:text-black"
+                        }`}
+                      >
+                        {item.label}
+                        {item.children && (
+                          <ChevronDown className="inline ml-1 w-4 h-4 transition-transform group-hover:rotate-180" />
+                        )}
+                      </Link>
+
+                      {/* Dropdown - only if has children */}
+                      {item.children && (
+                        <div
+                          className="
+            absolute left-0 top-full pt-2 
+            opacity-0 invisible group-hover:opacity-100 group-hover:visible
+            transition-all duration-200
+            z-50 min-w-[220px]
+          "
+                        >
+                          <div className="bg-white shadow-xl rounded-md border border-gray-200 py-2 text-sm">
+                            {item.children.map((child, childIdx) => (
+                              <Link
+                                key={childIdx}
+                                href={child.path}
+                                className="
+                  block px-5 py-2.5 
+                  text-gray-800 hover:bg-gray-50 hover:text-accent
+                  transition-colors
+                "
+                                onClick={() => {
+                                  // optional: close mobile drawer if needed
+                                }}
+                              >
+                                {child.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   ))}
                 </div>
+                   <button
+                  onClick={() => router.push("/student-login")}
+                  className="
+        relative overflow-hidden 
+        px-6 py-3 text-lg rounded-full 
+        flex items-center gap-3 
+        bg-accent text-white
+        transition-all duration-300
+        group
+      "
+                >
+                  <span className="relative z-10">Login</span>
+                  <FaArrowRight className="relative z-10" />
+
+                  <span
+                    className="
+          absolute inset-0 
+          bg-primary  
+          translate-x-[-102%] 
+          group-hover:translate-x-0 
+          transition-transform duration-500 
+          rounded-full
+        "
+                  />
+                </button>
               </div>
 
-              {/* Right Side - Desktop: User Dropdown, Mobile: Menu Icon */}
               <div className="flex items-center gap-4 lg:hidden">
-
                 {/* Desktop User Dropdown */}
                 <div className="hidden lg:block relative">
                   <button
                     onClick={() => setUserDropdownOpen(!userDropdownOpen)}
                     className="flex items-center gap-2 px-3 py-2 rounded hover:bg-[#036659] transition-colors"
                   >
-                    <Menu className="w-6 h-6 text-white" />
+                    <Menu className="w-6 h-6 text-black" />
                   </button>
 
                   {userDropdownOpen && (
                     <>
-                      {/* Backdrop to close dropdown */}
+           
                       <div
                         className="fixed inset-0 z-10"
                         onClick={() => setUserDropdownOpen(false)}
                       ></div>
 
-                      {/* Dropdown Menu */}
+     
                       <div className="absolute z-50 right-0 top-full mt-2 w-48 bg-white shadow-lg rounded-md border py-2 ">
                         {userMenuItems.map((item, idx) => (
                           <Link
@@ -209,7 +225,7 @@ const [scriptLoaded, setScriptLoaded] = useState(false);
 
                 {/* Mobile Menu Icon */}
                 <button
-                  className="lg:hidden text-white"
+                  className="lg:hidden text-black"
                   onClick={() => setDrawerOpen(true)}
                 >
                   <Menu className="w-6 h-6" />
@@ -249,7 +265,7 @@ const [scriptLoaded, setScriptLoaded] = useState(false);
               className={`px-4 py-2 hover:bg-gray-700 cursor-pointer rounded ${
                 pathname === item.path
                   ? "font-medium text-yellow-400"
-                  : "text-white"
+                  : "text-black"
               }`}
               onClick={() => setDrawerOpen(false)}
             >
@@ -273,7 +289,7 @@ const [scriptLoaded, setScriptLoaded] = useState(false);
               className={`px-4 py-2 hover:bg-gray-700 cursor-pointer rounded ${
                 pathname === item.path
                   ? "font-medium text-yellow-400"
-                  : "text-white"
+                  : "text-black"
               }`}
               onClick={() => setDrawerOpen(false)}
             >
@@ -283,26 +299,25 @@ const [scriptLoaded, setScriptLoaded] = useState(false);
         </div>
       </Drawer>
 
-<Modal
-  open={loginOpen}
-  onCancel={() => setLoginOpen(false)}
-  footer={null}
-  width={420}
-  centered
->
-  <h2 className="text-xl font-semibold mb-4 text-center">
-    Student Login
-  </h2>
+      <Modal
+        open={loginOpen}
+        onCancel={() => setLoginOpen(false)}
+        footer={null}
+        width={420}
+        centered
+      >
+        <h2 className="text-xl font-semibold mb-4 text-center">
+          Student Login
+        </h2>
 
-  {/* TutorBird Widget loads here */}
-  {scriptLoaded && (
-    <Script
-      src="https://app.tutorbird.com/Widget/v4/Widget.ashx?settings=eyJTY2hvb2xJRCI6InNjaF9wTFpKUCIsIldlYnNpdGVJRCI6Indic181WnRKNyIsIldlYnNpdGVCbG9ja0lEIjoid2JiX21jY1hKRyJ9"
-      strategy="afterInteractive"
-    />
-  )}
-</Modal>
-
+        {/* TutorBird Widget loads here */}
+        {scriptLoaded && (
+          <Script
+            src="https://app.tutorbird.com/Widget/v4/Widget.ashx?settings=eyJTY2hvb2xJRCI6InNjaF9wTFpKUCIsIldlYnNpdGVJRCI6Indic181WnRKNyIsIldlYnNpdGVCbG9ja0lEIjoid2JiX21jY1hKRyJ9"
+            strategy="afterInteractive"
+          />
+        )}
+      </Modal>
     </header>
   );
 };
