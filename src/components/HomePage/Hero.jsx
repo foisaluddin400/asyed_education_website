@@ -1,6 +1,6 @@
 import React from 'react';
 import hero from "../../../public/img/bannar1.jpg";
-import { MapPin, Calendar, Star } from 'lucide-react';
+import { MapPin, Calendar, Star, MousePointer2 } from 'lucide-react';
 import Image from 'next/image';
 
 const Hero = () => {
@@ -67,15 +67,18 @@ const Hero = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 animate-float opacity-80">
+       <div className='mt-4'>
+            <div className="absolute bottom-10 left-1/2 animate-float opacity-80 ">
           {/* Mouse Frame */}
           <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center p-1">
             <div className="w-1.5 h-1.5 bg-white rounded-full animate-scroll"></div>
           </div>
         </div>
+       </div>
       </div>
     </section>
   );
 };
 
 export default Hero;
+
