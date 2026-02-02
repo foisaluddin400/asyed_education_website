@@ -17,7 +17,7 @@ const Hero = () => {
         />
 
         {/* The "mix-blend-multiply" gives it that specific deep green tinted look from your image */}
-        <div className="absolute inset-0 bg-[#408f55]/80 " />
+        <div className="absolute inset-0 bg-[#408f55]/90 " />
       </div>
 
       {/* Content Container */}

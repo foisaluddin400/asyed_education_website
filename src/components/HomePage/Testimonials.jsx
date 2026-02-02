@@ -31,13 +31,13 @@ const Testimonials = () => {
   };
   return (
     <div>
-      <div className="text-center pt-20 ">
+      {/* <div className="text-center pt-20 ">
         <h1 className="md:text-4xl text-3xl">Testimonials</h1>
         <p className="text-neutral pt-1">
           Easily find and book qualified tutors by subject, grade <br /> level,
           and availability.
         </p>
-      </div>
+      </div> */}
       <div
         className="md:py-16 mt-9 bg-cover bg-center"
         style={{
@@ -48,16 +48,12 @@ const Testimonials = () => {
           <div>
             <h1 className="text-2xl font-semibold mb-3">Testomonial</h1>
             <h1 className="md:text-6xl text-4xl mb-6 font-bold">
-              What Students Have To Say
+              What Parents Are Saying
             </h1>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis
-              maxime earum facilis eligendi velit! Consequatur exercitationem
-              veritatis fugit, beatae temporibus maxime nesciunt, harum, dicta
-              sed tempore repellendus iusto reprehenderit velit natus
-              blanditiis!
+              Real families share how our small-group approach and detailed progress reporting have helped their children thrive academically.
             </p>
-            <button
+            {/* <button
               className="
                                        mt-8
                        relative overflow-hidden 
@@ -81,7 +77,7 @@ const Testimonials = () => {
                          rounded-full
                        "
               ></span>
-            </button>
+            </button> */}
           </div>
           <div className="mt-8 md:mt-0">
             <div className="w-full">
