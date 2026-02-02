@@ -1,13 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import { Search, ShoppingCart, User, ChevronDown, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Drawer, Modal } from "antd";
 import Image from "next/image";
-import { FaArrowRight, FaTwitter, FaYoutube } from "react-icons/fa";
-import { SiFacebook } from "react-icons/si";
-import { RiInstagramFill } from "react-icons/ri";
+import { FaArrowRight} from "react-icons/fa";
 import { CiPhone } from "react-icons/ci";
 import { IoMailUnreadOutline } from "react-icons/io5";
 import { IoIosHome } from "react-icons/io";
