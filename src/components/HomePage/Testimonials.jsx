@@ -1,15 +1,11 @@
 "use client";
 
 import React, { useRef } from "react";
-
 import Image from "next/image";
-
-import background from "../../../public/img/back.png";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import { MdStar } from "react-icons/md";
 import { HiArrowNarrowLeft, HiArrowNarrowRight } from "react-icons/hi";
-import { FaArrowRight } from "react-icons/fa";
 import { RiChatQuoteLine } from "react-icons/ri";
 import { useGetAllTestimonialsQuery } from "@/redux/Api/blogApi";
 import { fileBaseurl } from "@/redux/Api/baseApi";
@@ -17,8 +13,6 @@ import { fileBaseurl } from "@/redux/Api/baseApi";
 const Testimonials = () => {
   const { data: response } = useGetAllTestimonialsQuery();
   const testimonials = response?.data?.items || (Array.isArray(response?.data) ? response.data : []);
-  console.log("Testimonials Data:", testimonials);
-
 
   const splideRef = useRef(null);
 
@@ -29,148 +23,122 @@ const Testimonials = () => {
   const handleNextClick = () => {
     splideRef.current?.splide.go(">");
   };
-  return (
-    <div>
-      {/* <div className="text-center pt-20 ">
-        <h1 className="md:text-4xl text-3xl">Testimonials</h1>
-        <p className="text-neutral pt-1">
-          Easily find and book qualified tutors by subject, grade <br /> level,
-          and availability.
-        </p>
-      </div> */}
-      <div
-        className="md:py-16 mt-9 bg-cover bg-center"
-        style={{
-          backgroundImage: `url(${background.src})`,
-        }}
-      >
-        <div className="md:grid grid-cols-2 text-white gap-4 container m-auto py-8 px-5">
-          <div>
-            <h1 className="text-2xl font-semibold mb-3">Testomonial</h1>
-            <h1 className="md:text-6xl text-4xl mb-6 font-bold">
-              What Parents Are Saying
-            </h1>
-            <p>
-              Real families share how our small-group approach and detailed progress reporting have helped their children thrive academically.
-            </p>
-            {/* <button
-              className="
-                                       mt-8
-                       relative overflow-hidden 
-                       px-6 py-3 text-lg rounded-full 
-                       flex items-center gap-3 
-                       bg-accent text-white
-                       transition-all duration-300
-                       group
-                     "
-            >
-              <span className="relative z-10">Find More</span>
-              <FaArrowRight className="relative z-10" />
 
-              <span
-                className="
-                         absolute inset-0 
-                         bg-black 
-                         translate-x-[-102%] 
-                         group-hover:translate-x-0 
-                         transition-transform duration-500 
-                         rounded-full
-                       "
-              ></span>
-            </button> */}
-          </div>
-          <div className="mt-8 md:mt-0">
-            <div className="w-full">
-              {testimonials.length === 0 ? (
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 p-8 text-center flex flex-col items-center justify-center min-h-[300px]">
-                  <div className="bg-white/20 p-4 rounded-full mb-4">
-                    <RiChatQuoteLine className="text-5xl text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">No Stories Yet</h3>
-                  <p className="text-gray-200 max-w-sm">
-                    Be the first to share your experience with us! We'd love to hear from you.
-                  </p>
-                </div>
-              ) : (
-                <Splide
-                  ref={splideRef}
-                  options={{
-                    type: "loop",
-                    perPage: 2,
-                    gap: "1rem",
-                    arrows: false,
-                    pagination: false,
-                    breakpoints: {
-                      1724: { perPage: 3 },
-                      968: { perPage: 2 },
-                      640: { perPage: 1 },
-                    },
-                  }}
-                  aria-label="Testimonials"
-                  className="w-full"
-                >
-                  {testimonials?.map((item, index) => (
-                    <SplideSlide key={index}>
-                      <div className="shadow-lg bg-[#FFFFFF] rounded-2xl p-4 py-8 h-full flex flex-col justify-between">
-                        <div>
-                          <div className="flex pb-3 text-yellow-500">
-                            <MdStar />
-                            <MdStar />
-                            <MdStar />
-                            <MdStar />
-                            <MdStar />
-                            <p className="-mt-1 pl-2 text-gray-600">(5.0)</p>
-                          </div>
-                          <p className="text-sm mt-1 text-gray-700 italic">
-                            {item?.quote}
-                          </p>
-                        </div>
-                        <div className="flex items-center gap-4 mt-5">
-                          <div className="relative w-[60px] h-[60px]">
+  return (
+    <section className="py-16 md:py-24 bg-white font-sans bg-[#f5f5f5]">
+      <div className="container mx-auto px-5">
+        
+        {/* Centered Header - Matches Image Design */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-4xl md:text-6xl font-extrabold text-black mb-6">
+            What Parents Are Saying
+          </h2>
+          <p className="text-gray-500 text-lg leading-relaxed">
+            Real families share how our small-group approach and detailed progress 
+            reporting have helped their children thrive academically.
+          </p>
+        </div>
+
+        {/* Testimonials Slider */}
+        <div className="max-w-7xl mx-auto">
+          {testimonials.length === 0 ? (
+            <div className="bg-gray-50 rounded-2xl p-12 text-center flex flex-col items-center border-2 border-dashed border-gray-200">
+              <RiChatQuoteLine className="text-5xl text-gray-300 mb-4" />
+              <h3 className="text-xl font-bold text-gray-900">No Stories Yet</h3>
+              <p className="text-gray-500">We'd love to hear your feedback!</p>
+            </div>
+          ) : (
+            <div className="relative group">
+              <Splide
+                ref={splideRef}
+                options={{
+                  type: "loop",
+                  perPage: 3,
+                  gap: "2rem",
+                  arrows: false,
+                  pagination: false,
+                  breakpoints: {
+                    1024: { perPage: 2 },
+                    640: { perPage: 1 },
+                  },
+                }}
+                className="testimonial-splide"
+              >
+                {testimonials.map((item, index) => (
+                  <SplideSlide key={index}>
+                    <div className="bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow rounded-2xl p-8 h-full flex flex-col">
+                      
+                      {/* 5 Stars - Matches Image */}
+                      <div className="flex gap-1 text-[#FFD646] mb-4">
+                        {[...Array(5)].map((_, i) => (
+                          <MdStar key={i} size={22} />
+                        ))}
+                      </div>
+
+                      {/* Quote Text */}
+                      <p className="text-gray-600 italic text-base leading-relaxed mb-8 flex-grow">
+                        "{item?.quote}"
+                      </p>
+
+                      {/* Author Info */}
+                      <div className="flex items-center gap-4 border-t border-gray-50 pt-6">
+                        {/* Optional Avatar - Styled small and clean */}
+                        {item?.authorAvatar && (
+                          <div className="relative w-12 h-12 shrink-0">
                             <Image
                               src={
-                                item?.authorAvatar?.startsWith("http")
-                                  ? item?.authorAvatar
-                                  : `${fileBaseurl}/${item?.authorAvatar}`
+                                item.authorAvatar.startsWith("http")
+                                  ? item.authorAvatar
+                                  : `${fileBaseurl}/${item.authorAvatar}`
                               }
-                              alt={item?.authorName}
+                              alt={item.authorName}
                               fill
                               className="rounded-full object-cover"
                             />
                           </div>
-                          <div>
-                            <h5 className="font-semibold text-gray-900">
-                              {item?.authorName}
-                            </h5>
-                            <p className="text-sm text-gray-500">{item?.authorTitle}</p>
-                          </div>
+                        )}
+                        <div>
+                          <h5 className="font-bold text-gray-900 text-lg">
+                            {item?.authorName}
+                          </h5>
+                          <p className="text-sm text-gray-400 font-medium">
+                            {item?.authorTitle}
+                          </p>
                         </div>
                       </div>
-                    </SplideSlide>
-                  ))}
-                </Splide>
-              )}
-            </div>
+                    </div>
+                  </SplideSlide>
+                ))}
+              </Splide>
 
-            {/* Custom Arrows */}
-            <div className="flex gap-3 justify-center mt-5">
-              <button
-                className="bg-[#0091FF] p-2 rounded text-white"
+              {/* Custom Navigation Arrows - Positioned to the sides */}
+              {/* <button
+                className="absolute top-1/2 -left-4 md:-left-12 -translate-y-1/2 bg-white shadow-lg border border-gray-100 p-3 rounded-full text-gray-400 hover:text-blue-500 transition-all z-10 hidden md:block"
                 onClick={handlePrevClick}
               >
                 <HiArrowNarrowLeft className="text-2xl" />
               </button>
               <button
-                className="bg-[#0091FF] p-2 rounded text-white"
+                className="absolute top-1/2 -right-4 md:-right-12 -translate-y-1/2 bg-white shadow-lg border border-gray-100 p-3 rounded-full text-gray-400 hover:text-blue-500 transition-all z-10 hidden md:block"
                 onClick={handleNextClick}
               >
                 <HiArrowNarrowRight className="text-2xl" />
-              </button>
+              </button> */}
             </div>
+          )}
+          
+          {/* Mobile Arrows */}
+          <div className="flex gap-4 justify-center mt-10 md:hidden">
+            <button className="bg-white p-3 rounded-full shadow border border-gray-100" onClick={handlePrevClick}>
+              <HiArrowNarrowLeft className="text-xl" />
+            </button>
+            <button className="bg-white p-3 rounded-full shadow border border-gray-100" onClick={handleNextClick}>
+              <HiArrowNarrowRight className="text-xl" />
+            </button>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
